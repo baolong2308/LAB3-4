@@ -10,6 +10,8 @@ int KeyReg0 = NORMAL_STATE;
 int KeyReg2 = NORMAL_STATE;
 int KeyReg1 = NORMAL_STATE;
 
+int button1_flag=0;
+
 int KeyReg3 = NORMAL_STATE; // trạng thái ổn định trước đó
 int TimerForKeyPress = 100;
 
@@ -37,7 +39,6 @@ void getKeyInput() {
 					//TODO
 					subKeyProcess();
 				}
-
 				TimerForKeyPress = 100;
 			}
 		}
