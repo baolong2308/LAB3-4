@@ -5,7 +5,7 @@
  *      Author: admin
  */
 #include"timer.h"
-#include"main.h"
+
 #define MAX_COUNTER 10
 int timer_counter[MAX_COUNTER];
 int timer_flag[MAX_COUNTER];

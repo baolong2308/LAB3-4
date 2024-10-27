@@ -4,6 +4,8 @@
  *  Created on: Oct 21, 2024
  *      Author: admin
  */
+#include "global.h"
+
 
 #ifndef INC_BUTTON_H_
 #define INC_BUTTON_H_

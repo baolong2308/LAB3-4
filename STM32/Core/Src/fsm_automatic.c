@@ -5,24 +5,47 @@
  *      Author: admin
  */
 
-
 #include"fsm_automatic.h"
 
-
-void fsm_automatic_run(){
-	switch(status){
+void fsm_automatic_run() {
+	switch (status) {
 	case INIT:
-		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+		turnOff_LED();
 		status = AUTO_RED;
 		setTimer(0, 500);
 		break;
 	case AUTO_RED:
+		turnOn_RED();
+		if (timer_flag[0] == 1) {
+			status = AUTO_GREEN;
+			setTimer(1, 300);
+		}
+		if (isButtonPressed() == 1) {
+			status = MAN_RED;
+			setTimer(0, 1000);
+		}
 		break;
 	case AUTO_GREEN:
+		turnOn_GREEN();
+		if (timer_flag[1] == 1) {
+			status = AUTO_YELLOW;
+			setTimer(2, 200);
+		}
+		if (isButtonPressed() == 1) {
+			status = MAN_GREEN;
+			setTimer(0, 1000);
+		}
 		break;
 	case AUTO_YELLOW:
+		turnOn_YELLOW();
+		if (timer_flag[2] == 1) {
+			status = AUTO_RED;
+			setTimer(0, 500);
+		}
+		if (isButtonPressed() == 1) {
+			status = MAN_YELLOW;
+			setTimer(0, 1000);
+		}
 		break;
 	default:
 		break;

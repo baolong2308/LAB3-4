@@ -1,0 +1,4 @@
+../Core/Src/traffic_light.c:9:6:turnOff_LED	8	static
+../Core/Src/traffic_light.c:14:6:turnOn_RED	8	static
+../Core/Src/traffic_light.c:19:6:turnOn_GREEN	8	static
+../Core/Src/traffic_light.c:24:6:turnOn_YELLOW	8	static
