@@ -9,16 +9,16 @@
 
 #ifndef INC_BUTTON_H_
 #define INC_BUTTON_H_
+extern int KeyReg0[];
+extern int KeyReg2[];
+extern int KeyReg1[];
+extern int KeyReg3[];
+extern int button_flag[];
 
-#define NORMAL_STATE GPIO_PIN_SET
-#define PRESSED_STATE GPIO_PIN_RESET
 
-
-
-
-int isButtonPressed();
+int isButtonPressed(int index);
 
 void getKeyInput();
-void subKeyProcess();
+void subKeyProcess(int index);
 
 #endif /* INC_BUTTON_H_ */

@@ -9,36 +9,42 @@
 void fsm_manual_run() {
 	switch (status) {
 	case MAN_RED:
-		turnOn_RED();
-		if (timer_flag[0] == 1) {
-			status = AUTO_RED;
-			setTimer(0, 500);
+		turnOn_RED1();
+		turnOn_RED2();
+		display7SEG_MODE(2);
+		if (isTimerExpired(7) == 1) {
+			status = RED_GREEN;
+			setTimer(6, 300);
 		}
-		if (isButtonPressed() == 1) {
-			status = MAN_GREEN;
-			setTimer(1, 1000);
+		if (isButtonPressed(0) == 1) {
+			status = MAN_YELLOW;
+			setTimer(7, 1000);
 		}
 		break;
 	case MAN_GREEN:
-		turnOn_GREEN();
-		if (timer_flag[1] == 1) {
-			status = AUTO_GREEN;
-			setTimer(1, 300);
+		turnOn_GREEN1();
+		turnOn_GREEN2();
+		display7SEG_MODE(4);
+		if (isTimerExpired(7) == 1) {
+			status = RED_GREEN;
+			setTimer(6, 300);
 		}
-		if (isButtonPressed() == 1) {
-			status = MAN_YELLOW;
-			setTimer(2, 1000);
+		if (isButtonPressed(0) == 1) {
+			status = MAN_RED;
+			setTimer(7, 1000);
 		}
 		break;
 	case MAN_YELLOW:
-		turnOn_YELLOW();
-		if (timer_flag[2] == 1) {
-			status = AUTO_YELLOW;
-			setTimer(2, 200);
+		turnOn_YELLOW1();
+		turnOn_YELLOW2();
+		display7SEG_MODE(3);
+		if (isTimerExpired(7) == 1) {
+			status = RED_GREEN;
+			setTimer(6, 300);
 		}
-		if (isButtonPressed() == 1) {
-			status = MAN_RED;
-			setTimer(0, 1000);
+		if (isButtonPressed(0) == 1) {
+			status = MAN_GREEN;
+			setTimer(7, 1000);
 		}
 		break;
 	default:

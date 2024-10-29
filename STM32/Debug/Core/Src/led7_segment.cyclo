@@ -1,0 +1,3 @@
+../Core/Src/led7_segment.c:8:6:display7SEG_MODE	6
+../Core/Src/led7_segment.c:102:6:display7SEG_1	11
+../Core/Src/led7_segment.c:303:6:display7SEG_2	11

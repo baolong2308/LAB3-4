@@ -9,9 +9,11 @@
 #define INC_TRAFFIC_LIGHT_H_
 #include"global.h"
 void turnOff_LED();
-void turnOn_RED();
-void turnOn_GREEN();
-void turnOn_YELLOW();
-
+void turnOn_RED1();
+void turnOn_GREEN1();
+void turnOn_YELLOW1();
+void turnOn_RED2();
+void turnOn_GREEN2();
+void turnOn_YELLOW2();
 
 #endif /* INC_TRAFFIC_LIGHT_H_ */
