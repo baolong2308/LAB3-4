@@ -8,9 +8,10 @@
 #ifndef INC_LED7_SEGMENT_H_
 #define INC_LED7_SEGMENT_H_
 #include"global.h"
+extern int led_buffer[] ;
+void turnoffLEDs();
+void display7SEG(int num);
+void update7SEG(int index);
 
-void display7SEG_1(int num);
-void display7SEG_2(int num);
-void display7SEG_MODE(int num);
 
 #endif /* INC_LED7_SEGMENT_H_ */

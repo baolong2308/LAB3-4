@@ -23,7 +23,7 @@ void fsm_automatic_run() {
 	case RED_GREEN:
 		turnOn_RED1();
 		turnOn_GREEN2();
-		display7SEG_MODE(1);
+
 		if (isTimerExpired(6) == 1) {
 			status = RED_YELLOW;
 			setTimer(5, 200);

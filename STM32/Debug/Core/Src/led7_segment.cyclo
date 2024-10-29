@@ -1,3 +1,4 @@
-../Core/Src/led7_segment.c:8:6:display7SEG_MODE	6
-../Core/Src/led7_segment.c:102:6:display7SEG_1	11
-../Core/Src/led7_segment.c:303:6:display7SEG_2	11
+../Core/Src/led7_segment.c:9:6:updateClockBuffer	1
+../Core/Src/led7_segment.c:15:6:update7SEG	5
+../Core/Src/led7_segment.c:38:6:turnoffLEDs	1
+../Core/Src/led7_segment.c:44:6:display7SEG	11
