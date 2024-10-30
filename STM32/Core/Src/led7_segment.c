@@ -7,11 +7,11 @@
 #include"led7_segment.h"
 int led_buffer[4] = { 0, 0, 0, 0 };
 
-void updateClockBuffer() {
-	led_buffer[0] = time_1 / 10;
-	led_buffer[1] = time_1 % 10;
-	led_buffer[2] = time_2 / 10;
-	led_buffer[3] = time_2 % 10;
+void updateClockBuffer(int time1,int time2) {
+	led_buffer[0] = time1 / 10;
+	led_buffer[1] = time1 % 10;
+	led_buffer[2] = time2 / 10;
+	led_buffer[3] = time2 % 10;
 }
 void update7SEG_1(int index) {
 

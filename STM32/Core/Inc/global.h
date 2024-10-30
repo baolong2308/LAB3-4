@@ -27,7 +27,7 @@ extern int time_2;
 extern int led_buffer[] ;
 extern int index_led_1;
 extern int index_led_2;
-
+extern int temp;
 
 #define INIT        1
 #define RED_GREEN   2
