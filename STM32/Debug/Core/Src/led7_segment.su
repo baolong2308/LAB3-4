@@ -1,4 +1,6 @@
-../Core/Src/led7_segment.c:9:6:updateClockBuffer	4	static
-../Core/Src/led7_segment.c:15:6:update7SEG	16	static
-../Core/Src/led7_segment.c:38:6:turnoffLEDs	8	static
-../Core/Src/led7_segment.c:44:6:display7SEG	16	static
+../Core/Src/led7_segment.c:10:6:updateClockBuffer	4	static
+../Core/Src/led7_segment.c:16:6:update7SEG_1	16	static
+../Core/Src/led7_segment.c:35:6:turnoffLEDs	8	static
+../Core/Src/led7_segment.c:41:6:update7SEG_2	16	static
+../Core/Src/led7_segment.c:58:6:display7SEG_1	16	static
+../Core/Src/led7_segment.c:253:6:display7SEG_2	16	static

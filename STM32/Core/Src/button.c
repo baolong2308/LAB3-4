@@ -42,13 +42,13 @@ void getKeyInput() {
 	KeyReg2[2] = HAL_GPIO_ReadPin(Button_3_GPIO_Port, Button_3_Pin);
 	for (int i = 0; i < MAX_BUTTON; i++) {
 		if ((KeyReg0[i] == KeyReg1[i]) && (KeyReg1[i] == KeyReg2[i])) { // xử lý ổn định button
-			if (KeyReg3[i] != KeyReg2[i]) { // KeyReg3 xử lý đè button
+			if (KeyReg3[i] != KeyReg2[i]) {
 				KeyReg3[i] = KeyReg2[i];
 
 				if (KeyReg2[i] == PRESSED_STATE) { // nhấn thả
 					//TODO
 					subKeyProcess(i);
-					TimerForKeyPress = 1000;
+					//TimerForKeyPress = 1000;
 				}
 			} else {				// xử lý đè
 				TimerForKeyPress--;

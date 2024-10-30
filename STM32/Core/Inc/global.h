@@ -19,6 +19,10 @@
 #define NORMAL_STATE GPIO_PIN_RESET
 #define PRESSED_STATE GPIO_PIN_SET
 
+#define TIME_GREEN	3
+#define TIME_RED	5
+#define TIME_YELLOW	2
+
 #define INIT        1
 #define RED_GREEN   2
 #define RED_YELLOW  3

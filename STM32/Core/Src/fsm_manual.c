@@ -11,14 +11,14 @@ void fsm_manual_run() {
 	case MAN_RED:
 		turnOn_RED1();
 		turnOn_RED2();
-
-		if (isTimerExpired(7) == 1) {
+		display7SEG_1(2);
+		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
-			setTimer(6, 300);
+			setTimer(1, TIME_GREEN * 100);
 		}
 		if (isButtonPressed(0) == 1) {
 			status = MAN_YELLOW;
-			setTimer(7, 1000);
+			setTimer(1, 1000);
 		}
 		if (isButtonPressed(1) == 1) {
 
@@ -27,14 +27,14 @@ void fsm_manual_run() {
 	case MAN_GREEN:
 		turnOn_GREEN1();
 		turnOn_GREEN2();
-
-		if (isTimerExpired(7) == 1) {
+		display7SEG_1(4);
+		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
-			setTimer(6, 300);
+			setTimer(1, TIME_GREEN * 100);
 		}
 		if (isButtonPressed(0) == 1) {
-			status = MAN_RED;
-			setTimer(7, 1000);
+			status = INIT;
+			setTimer(1, 1000);
 		}
 		if (isButtonPressed(1) == 1) {
 
@@ -43,14 +43,14 @@ void fsm_manual_run() {
 	case MAN_YELLOW:
 		turnOn_YELLOW1();
 		turnOn_YELLOW2();
-
-		if (isTimerExpired(7) == 1) {
+		display7SEG_1(3);
+		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
-			setTimer(6, 300);
+			setTimer(1, TIME_GREEN * 100);
 		}
 		if (isButtonPressed(0) == 1) {
 			status = MAN_GREEN;
-			setTimer(7, 1000);
+			setTimer(1, 1000);
 		}
 		if (isButtonPressed(1) == 1) {
 
