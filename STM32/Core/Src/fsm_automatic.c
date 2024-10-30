@@ -8,12 +8,10 @@
 #include"fsm_automatic.h"
 #include"led7_segment.h"
 void scanLEDs() {
-	if (isTimerExpired(3) == 1) {
-		updateClockBuffer();
-		update7SEG_2(index_led_2++ % 2);
-		update7SEG_1(index_led_1++ % 2);
-		setTimer(3, 25);
-	}
+	updateClockBuffer();
+	update7SEG_2(index_led_2++ % 2);
+	update7SEG_1(index_led_1++ % 2);
+	setTimer(3, 25);
 }
 void fsm_automatic_run() {
 	if (isTimerExpired(0) == 1) {
@@ -23,14 +21,14 @@ void fsm_automatic_run() {
 
 	switch (status) {
 	case INIT:
-
 		turnOff_LED();
+
 		status = RED_GREEN;
 
-		setTimer(0, 100);
+		setTimer(0, 100); //timer DOT
 		setTimer(1, TIME_GREEN * 100);
-		setTimer(2, 100);
-		setTimer(3, 1);
+		setTimer(2, 100); // timer second
+		setTimer(3, 25); // timer scan
 		break;
 	case RED_GREEN:
 		turnOn_RED1();
@@ -40,11 +38,14 @@ void fsm_automatic_run() {
 			time_2--;
 			setTimer(2, 100);
 		}
-		scanLEDs();
+		if (isTimerExpired(3) == 1) {
+			scanLEDs();
+		}
 		if (isTimerExpired(1) == 1) {
 			status = RED_YELLOW;
-			setTimer(1, TIME_YELLOW * 100);
 			time_1 = TIME_YELLOW - 1;
+			setTimer(1, TIME_YELLOW * 100);
+
 		}
 
 		if (isButtonPressed(0) == 1) {
@@ -60,12 +61,15 @@ void fsm_automatic_run() {
 			time_2--;
 			setTimer(2, 100);
 		}
-		scanLEDs();
+		if (isTimerExpired(3) == 1) {
+			scanLEDs();
+		}
 		if (isTimerExpired(1) == 1) {
 			status = GREEN_RED;
-			setTimer(1, TIME_GREEN * 100);
 			time_1 = TIME_RED - 1;
 			time_2 = TIME_GREEN - 1;
+			setTimer(1, TIME_GREEN * 100);
+
 		}
 		if (isButtonPressed(0) == 1) {
 			status = MAN_RED;
@@ -81,11 +85,14 @@ void fsm_automatic_run() {
 			time_2--;
 			setTimer(2, 100);
 		}
-		scanLEDs();
+		if (isTimerExpired(3) == 1) {
+			scanLEDs();
+		}
 		if (isTimerExpired(1) == 1) {
 			status = YELLOW_RED;
-			setTimer(1, TIME_YELLOW * 100);
 			time_2 = TIME_YELLOW - 1;
+			setTimer(1, TIME_YELLOW * 100);
+
 		}
 
 		if (isButtonPressed(0) == 1) {
@@ -101,12 +108,15 @@ void fsm_automatic_run() {
 			time_2--;
 			setTimer(2, 100);
 		}
-		scanLEDs();
+		if (isTimerExpired(3) == 1) {
+			scanLEDs();
+		}
 		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
-			setTimer(1, TIME_GREEN * 100);
 			time_1 = TIME_GREEN - 1;
 			time_2 = TIME_RED - 1;
+			setTimer(1, TIME_GREEN * 100);
+
 		}
 		if (isButtonPressed(0) == 1) {
 			status = MAN_RED;

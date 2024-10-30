@@ -6,14 +6,11 @@
  */
 #include "button.h"
 #define MAX_BUTTON 10
-int KeyReg0[MAX_BUTTON] = {NORMAL_STATE};
-int KeyReg1[MAX_BUTTON] = {NORMAL_STATE};
-int KeyReg2[MAX_BUTTON] = {NORMAL_STATE};
-int KeyReg3[MAX_BUTTON] = {NORMAL_STATE};// trạng thái ổn định trước đó
+int KeyReg0[MAX_BUTTON] = { NORMAL_STATE };
+int KeyReg1[MAX_BUTTON] = { NORMAL_STATE };
+int KeyReg2[MAX_BUTTON] = { NORMAL_STATE };
+int KeyReg3[MAX_BUTTON] = { NORMAL_STATE }; // trạng thái ổn định trước đó
 int button_flag[MAX_BUTTON];
-
-int TimerForKeyPress = 1000;
-
 
 int isButtonPressed(int index) {
 	if (button_flag[index] == 1) {
@@ -50,12 +47,12 @@ void getKeyInput() {
 					subKeyProcess(i);
 					//TimerForKeyPress = 1000;
 				}
-			} else {				// xử lý đè
-				TimerForKeyPress--;
-				if (TimerForKeyPress == 0) {
-					KeyReg3[i] = NORMAL_STATE;	// Luôn để Key3 != Key2
-				}
-			}
+			} /*else {				// xử lý đè
+			 TimerForKeyPress[i]--;
+			 if (TimerForKeyPress[i] == 0) {
+			 KeyReg3[i] = NORMAL_STATE;	// Luôn để Key3 != Key2
+			 }
+			 }*/
 		}
 	}
 }

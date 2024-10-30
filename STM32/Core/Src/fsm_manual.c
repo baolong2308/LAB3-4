@@ -11,7 +11,8 @@ void fsm_manual_run() {
 	case MAN_RED:
 		turnOn_RED1();
 		turnOn_RED2();
-		display7SEG_1(2);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		display7SEG_2(2);
 		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
 			setTimer(1, TIME_GREEN * 100);
@@ -27,7 +28,8 @@ void fsm_manual_run() {
 	case MAN_GREEN:
 		turnOn_GREEN1();
 		turnOn_GREEN2();
-		display7SEG_1(4);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		display7SEG_2(4);
 		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
 			setTimer(1, TIME_GREEN * 100);
@@ -43,7 +45,8 @@ void fsm_manual_run() {
 	case MAN_YELLOW:
 		turnOn_YELLOW1();
 		turnOn_YELLOW2();
-		display7SEG_1(3);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		display7SEG_2(3);
 		if (isTimerExpired(1) == 1) {
 			status = RED_GREEN;
 			setTimer(1, TIME_GREEN * 100);
