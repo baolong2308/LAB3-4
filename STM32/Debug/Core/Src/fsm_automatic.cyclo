@@ -1,2 +1,2 @@
 ../Core/Src/fsm_automatic.c:10:6:scanLEDs	1
-../Core/Src/fsm_automatic.c:17:6:fsm_automatic_run	30
+../Core/Src/fsm_automatic.c:17:6:fsm_automatic_run	24
