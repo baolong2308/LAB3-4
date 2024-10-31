@@ -37,12 +37,11 @@ void fsm_automatic_run() {
 		turnOn_RED1();
 		turnOn_GREEN2();
 		if (isTimerExpired(3) == 1) {
-
-			scanLEDs( time_1, time_2);
+			scanLEDs(time_1, time_2);
 		}
 		if (isTimerExpired(2) == 1) {
-
-			time_1--;
+			if (time_1 > 0)
+				time_1--;
 			time_2--;
 			setTimer(2, 100);
 
@@ -67,10 +66,10 @@ void fsm_automatic_run() {
 		turnOn_YELLOW2();
 
 		if (isTimerExpired(2) == 1) {
-
-			time_1--;
-
-			time_2--;
+			if (time_1 > 0)
+				time_1--;
+			if (time_2 > 0)
+				time_2--;
 			setTimer(2, 100);
 		}
 
@@ -96,8 +95,8 @@ void fsm_automatic_run() {
 
 		if (isTimerExpired(2) == 1) {
 			time_1--;
-
-			time_2--;
+			if (time_2 > 0)
+				time_2--;
 			setTimer(2, 100);
 		}
 
@@ -120,10 +119,10 @@ void fsm_automatic_run() {
 		turnOn_YELLOW1();
 
 		if (isTimerExpired(2) == 1) {
-
-			time_1--;
-
-			time_2--;
+			if (time_1 > 0)
+				time_1--;
+			if (time_2 > 0)
+				time_2--;
 			setTimer(2, 100);
 		}
 
