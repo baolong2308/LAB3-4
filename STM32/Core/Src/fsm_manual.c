@@ -13,7 +13,7 @@ void fsm_manual_run() {
 	case MAN_RED:
 		turnOn_RED1();
 		turnOn_RED2();
-		time_2 = 2;
+
 
 		if (isButtonPressed(0) == 1) {
 			status = MAN_YELLOW;
@@ -36,7 +36,7 @@ void fsm_manual_run() {
 	case MAN_GREEN:
 		turnOn_GREEN1();
 		turnOn_GREEN2();
-		time_2 = 4;
+
 
 		if (isTimerExpired(3) == 1) {
 			scanLEDs(count, 4);
