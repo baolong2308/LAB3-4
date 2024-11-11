@@ -14,5 +14,5 @@ void turnOn_YELLOW1();
 void turnOn_RED2();
 void turnOn_GREEN2();
 void turnOn_YELLOW2();
-
+void turnOff();
 #endif /* INC_TRAFFIC_LIGHT_H_ */

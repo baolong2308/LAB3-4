@@ -9,7 +9,7 @@
 #define INC_LED7_SEGMENT_H_
 #include"global.h"
 
-void turnOffLEDs();
+//void turnOffLEDs();
 
 void update7SEG_1(int index);
 void update7SEG_2(int index);

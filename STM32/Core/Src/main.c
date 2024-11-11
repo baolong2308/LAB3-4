@@ -105,7 +105,7 @@ int main(void)
 	while (1) {
 		fsm_manual_run();
 		fsm_automatic_run();
-
+		fsm_setting();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

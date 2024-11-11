@@ -10,13 +10,18 @@
 void fsm_manual_run() {
 	switch (status) {
 
-	case MAN_RED:
-		turnOn_RED1();
-		turnOn_RED2();
+	case SET_RED:
 
+
+		if (isTimerExpired(6) == 1) {
+			HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
+			HAL_GPIO_TogglePin(LED_4_GPIO_Port, LED_4_Pin);
+			setTimer(6, 50);
+		}
 
 		if (isButtonPressed(0) == 1) {
-			status = MAN_YELLOW;
+			status = SET_YELLOW;
+			turnOff();
 			count = 0;
 
 		}
@@ -33,10 +38,14 @@ void fsm_manual_run() {
 			time_1 = count;
 		}
 		break;
-	case MAN_GREEN:
-		turnOn_GREEN1();
-		turnOn_GREEN2();
+	case SET_GREEN:
 
+
+		if (isTimerExpired(6) == 1) {
+			HAL_GPIO_TogglePin(LED_6_GPIO_Port, LED_6_Pin);
+			HAL_GPIO_TogglePin(LED_3_GPIO_Port, LED_3_Pin);
+			setTimer(6, 50);
+		}
 
 		if (isTimerExpired(3) == 1) {
 			scanLEDs(count, 4);
@@ -66,9 +75,14 @@ void fsm_manual_run() {
 
 		}
 		break;
-	case MAN_YELLOW:
-		turnOn_YELLOW1();
-		turnOn_YELLOW2();
+	case SET_YELLOW:
+
+
+		if (isTimerExpired(6) == 1) {
+			HAL_GPIO_TogglePin(LED_2_GPIO_Port, LED_2_Pin);
+			HAL_GPIO_TogglePin(LED_5_GPIO_Port, LED_5_Pin);
+			setTimer(6, 50);
+		}
 
 		if (isTimerExpired(3) == 1) {
 
@@ -76,7 +90,8 @@ void fsm_manual_run() {
 
 		}
 		if (isButtonPressed(0) == 1) {
-			status = MAN_GREEN;
+			status = SET_GREEN;
+			turnOff();
 			count = 0;
 		}
 		if (isButtonPressed(1) == 1) {

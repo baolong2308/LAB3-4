@@ -37,6 +37,11 @@ extern int count;
 #define MAN_RED    12
 #define MAN_GREEN  13
 #define MAN_YELLOW 14
+
+#define SET_RED    16
+#define SET_GREEN  17
+#define SET_YELLOW 18
+
 #define ERR		   20
 
 
