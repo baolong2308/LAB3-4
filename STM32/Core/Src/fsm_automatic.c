@@ -61,12 +61,12 @@ void fsm_automatic_run() {
 		if (isButtonPressed(0) == 1) {
 			status = SET_RED;
 			setTimer(1, 1000);
-			setTimer(6,50);
+			setTimer(6,50); // toggle led
 			turnOff();
 		}
 		if (isButtonPressed(1) == 1) {
 			status = MAN_RED;
-			setTimer(5, 1000);
+
 		}
 
 		break;
@@ -97,7 +97,7 @@ void fsm_automatic_run() {
 		}
 		if (isButtonPressed(1) == 1) {
 			status = MAN_RED;
-			setTimer(5, 1000);
+
 		}
 
 		break;
@@ -128,7 +128,7 @@ void fsm_automatic_run() {
 		}
 		if (isButtonPressed(1) == 1) {
 			status = MAN_RED;
-			setTimer(5, 1000);
+
 		}
 
 		break;
@@ -159,7 +159,6 @@ void fsm_automatic_run() {
 		}
 		if (isButtonPressed(1) == 1) {
 			status = MAN_RED;
-			setTimer(5, 1000);
 		}
 		break;
 	default:
