@@ -55,9 +55,9 @@ void fsm_automatic_run() {
 			setTimer(1, TIME_YELLOW * 100);
 
 		}
-		if (isTimerExpired(3) == 1) {
-			scanLEDs(time_1, time_2);
-		}
+//		if (isTimerExpired(3) == 1) {
+//			scanLEDs(time_1, time_2);
+//		}
 		if (isButtonPressed(0) == 1) {
 			status = SET_RED;
 			setTimer(1, 1000);
