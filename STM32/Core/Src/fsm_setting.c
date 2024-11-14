@@ -11,7 +11,7 @@ void fsm_setting() {
 	case MAN_RED:
 		turnOn_RED1();
 		turnOn_RED2();
-		if (isButtonPressed(2) == 1) {
+		if (isButtonPressed(1) == 1) {
 			status = MAN_YELLOW;
 		}
 		if (isTimerExpired(3) == 1) {
@@ -22,7 +22,7 @@ void fsm_setting() {
 	case MAN_YELLOW:
 		turnOn_YELLOW1();
 		turnOn_YELLOW2();
-		if (isButtonPressed(2) == 1) {
+		if (isButtonPressed(1) == 1) {
 			status = MAN_GREEN;
 		}
 		if (isTimerExpired(3) == 1) {
@@ -33,7 +33,7 @@ void fsm_setting() {
 	case MAN_GREEN:
 		turnOn_GREEN1();
 		turnOn_GREEN2();
-		if (isButtonPressed(2) == 1) {
+		if (isButtonPressed(1) == 1) {
 			status = RED_GREEN;
 			time_1 = TIME_GREEN - 1;
 			time_2 = TIME_RED - 1;

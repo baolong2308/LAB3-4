@@ -1326,8 +1326,8 @@ void fsm_setting() {
  80009b2:	f000 fed1 	bl	8001758 <turnOn_RED1>
 		turnOn_RED2();
  80009b6:	f000 ff11 	bl	80017dc <turnOn_RED2>
-		if (isButtonPressed(2) == 1) {
- 80009ba:	2002      	movs	r0, #2
+		if (isButtonPressed(1) == 1) {
+ 80009ba:	2001      	movs	r0, #1
  80009bc:	f7ff fbc6 	bl	800014c <isButtonPressed>
  80009c0:	4603      	mov	r3, r0
  80009c2:	2b01      	cmp	r3, #1
@@ -1352,8 +1352,8 @@ void fsm_setting() {
  80009e2:	f000 fee5 	bl	80017b0 <turnOn_YELLOW1>
 		turnOn_YELLOW2();
  80009e6:	f000 ff29 	bl	800183c <turnOn_YELLOW2>
-		if (isButtonPressed(2) == 1) {
- 80009ea:	2002      	movs	r0, #2
+		if (isButtonPressed(1) == 1) {
+ 80009ea:	2001      	movs	r0, #1
  80009ec:	f7ff fbae 	bl	800014c <isButtonPressed>
  80009f0:	4603      	mov	r3, r0
  80009f2:	2b01      	cmp	r3, #1
@@ -1378,8 +1378,8 @@ void fsm_setting() {
  8000a12:	f000 feb7 	bl	8001784 <turnOn_GREEN1>
 		turnOn_GREEN2();
  8000a16:	f000 fef9 	bl	800180c <turnOn_GREEN2>
-		if (isButtonPressed(2) == 1) {
- 8000a1a:	2002      	movs	r0, #2
+		if (isButtonPressed(1) == 1) {
+ 8000a1a:	2001      	movs	r0, #1
  8000a1c:	f7ff fb96 	bl	800014c <isButtonPressed>
  8000a20:	4603      	mov	r3, r0
  8000a22:	2b01      	cmp	r3, #1
