@@ -27,6 +27,7 @@
 #include"fsm_manual.h"
 #include"fsm_setting.h"
 #include"led7_segment.h"
+#include"scheduler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -103,9 +104,7 @@ int main(void)
 	status = INIT;
 
 	while (1) {
-		fsm_manual_run();
-		fsm_automatic_run();
-		fsm_setting();
+		SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
