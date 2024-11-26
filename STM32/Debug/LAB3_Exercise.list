@@ -916,696 +916,696 @@ void fsm_automatic_run() {
  8000704:	20000000 	.word	0x20000000
 
 08000708 <fsm_manual_run>:
+ *  Created on: Oct 27, 2024
  *      Author: admin
  */
-
 #include"fsm_manual.h"
 
 void fsm_manual_run() {
  8000708:	b580      	push	{r7, lr}
  800070a:	af00      	add	r7, sp, #0
 	switch (status) {
- 800070c:	4b96      	ldr	r3, [pc, #600]	@ (8000968 <fsm_manual_run+0x260>)
+ 800070c:	4b7f      	ldr	r3, [pc, #508]	@ (800090c <fsm_manual_run+0x204>)
  800070e:	681b      	ldr	r3, [r3, #0]
- 8000710:	3b10      	subs	r3, #16
- 8000712:	2b04      	cmp	r3, #4
- 8000714:	f200 811c 	bhi.w	8000950 <fsm_manual_run+0x248>
- 8000718:	a201      	add	r2, pc, #4	@ (adr r2, 8000720 <fsm_manual_run+0x18>)
- 800071a:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 800071e:	bf00      	nop
- 8000720:	08000735 	.word	0x08000735
- 8000724:	080007c5 	.word	0x080007c5
- 8000728:	080008a3 	.word	0x080008a3
- 800072c:	08000951 	.word	0x08000951
- 8000730:	08000929 	.word	0x08000929
+ 8000710:	2b08      	cmp	r3, #8
+ 8000712:	d003      	beq.n	800071c <fsm_manual_run+0x14>
+ 8000714:	2b0f      	cmp	r3, #15
+ 8000716:	f000 80db 	beq.w	80008d0 <fsm_manual_run+0x1c8>
+		setTimer(2, 100);
+		setTimer(1, TIME_GREEN * 100);
+
+		break;
+	default:
+		break;
+ 800071a:	e0f5      	b.n	8000908 <fsm_manual_run+0x200>
+		switch (status_1) {
+ 800071c:	4b7c      	ldr	r3, [pc, #496]	@ (8000910 <fsm_manual_run+0x208>)
+ 800071e:	681b      	ldr	r3, [r3, #0]
+ 8000720:	2b0e      	cmp	r3, #14
+ 8000722:	d025      	beq.n	8000770 <fsm_manual_run+0x68>
+ 8000724:	2b0e      	cmp	r3, #14
+ 8000726:	dc64      	bgt.n	80007f2 <fsm_manual_run+0xea>
+ 8000728:	2b0c      	cmp	r3, #12
+ 800072a:	d002      	beq.n	8000732 <fsm_manual_run+0x2a>
+ 800072c:	2b0d      	cmp	r3, #13
+ 800072e:	d03e      	beq.n	80007ae <fsm_manual_run+0xa6>
+ 8000730:	e05f      	b.n	80007f2 <fsm_manual_run+0xea>
+			turnOn_RED1();
+ 8000732:	f001 f899 	bl	8001868 <turnOn_RED1>
+			if (isButtonPressed(1) == 1) {
+ 8000736:	2001      	movs	r0, #1
+ 8000738:	f7ff fd08 	bl	800014c <isButtonPressed>
+ 800073c:	4603      	mov	r3, r0
+ 800073e:	2b01      	cmp	r3, #1
+ 8000740:	d102      	bne.n	8000748 <fsm_manual_run+0x40>
+				status_1 = MAN_YELLOW_1;
+ 8000742:	4b73      	ldr	r3, [pc, #460]	@ (8000910 <fsm_manual_run+0x208>)
+ 8000744:	220e      	movs	r2, #14
+ 8000746:	601a      	str	r2, [r3, #0]
+			if (isTimerExpired(3) == 1) {
+ 8000748:	2003      	movs	r0, #3
+ 800074a:	f001 f843 	bl	80017d4 <isTimerExpired>
+ 800074e:	4603      	mov	r3, r0
+ 8000750:	2b01      	cmp	r3, #1
+ 8000752:	d103      	bne.n	800075c <fsm_manual_run+0x54>
+				scanLEDs(99, 5);
+ 8000754:	2105      	movs	r1, #5
+ 8000756:	2063      	movs	r0, #99	@ 0x63
+ 8000758:	f7ff fda2 	bl	80002a0 <scanLEDs>
+			if (isButtonPressed(0) == 1) {
+ 800075c:	2000      	movs	r0, #0
+ 800075e:	f7ff fcf5 	bl	800014c <isButtonPressed>
+ 8000762:	4603      	mov	r3, r0
+ 8000764:	2b01      	cmp	r3, #1
+ 8000766:	d141      	bne.n	80007ec <fsm_manual_run+0xe4>
+				status = READY;
+ 8000768:	4b68      	ldr	r3, [pc, #416]	@ (800090c <fsm_manual_run+0x204>)
+ 800076a:	220f      	movs	r2, #15
+ 800076c:	601a      	str	r2, [r3, #0]
+			break;
+ 800076e:	e03d      	b.n	80007ec <fsm_manual_run+0xe4>
+			turnOn_YELLOW1();
+ 8000770:	f001 f8a6 	bl	80018c0 <turnOn_YELLOW1>
+			if (isButtonPressed(1) == 1) {
+ 8000774:	2001      	movs	r0, #1
+ 8000776:	f7ff fce9 	bl	800014c <isButtonPressed>
+ 800077a:	4603      	mov	r3, r0
+ 800077c:	2b01      	cmp	r3, #1
+ 800077e:	d102      	bne.n	8000786 <fsm_manual_run+0x7e>
+				status_1 = MAN_GREEN_1;
+ 8000780:	4b63      	ldr	r3, [pc, #396]	@ (8000910 <fsm_manual_run+0x208>)
+ 8000782:	220d      	movs	r2, #13
+ 8000784:	601a      	str	r2, [r3, #0]
+			if (isButtonPressed(0) == 1) {
+ 8000786:	2000      	movs	r0, #0
+ 8000788:	f7ff fce0 	bl	800014c <isButtonPressed>
+ 800078c:	4603      	mov	r3, r0
+ 800078e:	2b01      	cmp	r3, #1
+ 8000790:	d102      	bne.n	8000798 <fsm_manual_run+0x90>
+				status = READY;
+ 8000792:	4b5e      	ldr	r3, [pc, #376]	@ (800090c <fsm_manual_run+0x204>)
+ 8000794:	220f      	movs	r2, #15
+ 8000796:	601a      	str	r2, [r3, #0]
+			if (isTimerExpired(3) == 1) {
+ 8000798:	2003      	movs	r0, #3
+ 800079a:	f001 f81b 	bl	80017d4 <isTimerExpired>
+ 800079e:	4603      	mov	r3, r0
+ 80007a0:	2b01      	cmp	r3, #1
+ 80007a2:	d125      	bne.n	80007f0 <fsm_manual_run+0xe8>
+				scanLEDs(99, 5);
+ 80007a4:	2105      	movs	r1, #5
+ 80007a6:	2063      	movs	r0, #99	@ 0x63
+ 80007a8:	f7ff fd7a 	bl	80002a0 <scanLEDs>
+			break;
+ 80007ac:	e020      	b.n	80007f0 <fsm_manual_run+0xe8>
+			turnOn_GREEN1();
+ 80007ae:	f001 f871 	bl	8001894 <turnOn_GREEN1>
+			if (isButtonPressed(1) == 1) {
+ 80007b2:	2001      	movs	r0, #1
+ 80007b4:	f7ff fcca 	bl	800014c <isButtonPressed>
+ 80007b8:	4603      	mov	r3, r0
+ 80007ba:	2b01      	cmp	r3, #1
+ 80007bc:	d102      	bne.n	80007c4 <fsm_manual_run+0xbc>
+				status_1 = MAN_RED_1;
+ 80007be:	4b54      	ldr	r3, [pc, #336]	@ (8000910 <fsm_manual_run+0x208>)
+ 80007c0:	220c      	movs	r2, #12
+ 80007c2:	601a      	str	r2, [r3, #0]
+			if (isButtonPressed(0) == 1) {
+ 80007c4:	2000      	movs	r0, #0
+ 80007c6:	f7ff fcc1 	bl	800014c <isButtonPressed>
+ 80007ca:	4603      	mov	r3, r0
+ 80007cc:	2b01      	cmp	r3, #1
+ 80007ce:	d102      	bne.n	80007d6 <fsm_manual_run+0xce>
+				status = READY;
+ 80007d0:	4b4e      	ldr	r3, [pc, #312]	@ (800090c <fsm_manual_run+0x204>)
+ 80007d2:	220f      	movs	r2, #15
+ 80007d4:	601a      	str	r2, [r3, #0]
+			if (isTimerExpired(3) == 1) {
+ 80007d6:	2003      	movs	r0, #3
+ 80007d8:	f000 fffc 	bl	80017d4 <isTimerExpired>
+ 80007dc:	4603      	mov	r3, r0
+ 80007de:	2b01      	cmp	r3, #1
+ 80007e0:	d107      	bne.n	80007f2 <fsm_manual_run+0xea>
+				scanLEDs(99, 5);
+ 80007e2:	2105      	movs	r1, #5
+ 80007e4:	2063      	movs	r0, #99	@ 0x63
+ 80007e6:	f7ff fd5b 	bl	80002a0 <scanLEDs>
+ 80007ea:	e002      	b.n	80007f2 <fsm_manual_run+0xea>
+			break;
+ 80007ec:	bf00      	nop
+ 80007ee:	e000      	b.n	80007f2 <fsm_manual_run+0xea>
+			break;
+ 80007f0:	bf00      	nop
+		switch (status_2) {
+ 80007f2:	4b48      	ldr	r3, [pc, #288]	@ (8000914 <fsm_manual_run+0x20c>)
+ 80007f4:	681b      	ldr	r3, [r3, #0]
+ 80007f6:	2b0b      	cmp	r3, #11
+ 80007f8:	d026      	beq.n	8000848 <fsm_manual_run+0x140>
+ 80007fa:	2b0b      	cmp	r3, #11
+ 80007fc:	f300 8083 	bgt.w	8000906 <fsm_manual_run+0x1fe>
+ 8000800:	2b09      	cmp	r3, #9
+ 8000802:	d002      	beq.n	800080a <fsm_manual_run+0x102>
+ 8000804:	2b0a      	cmp	r3, #10
+ 8000806:	d03e      	beq.n	8000886 <fsm_manual_run+0x17e>
+		break;
+ 8000808:	e07d      	b.n	8000906 <fsm_manual_run+0x1fe>
+			turnOn_RED2();
+ 800080a:	f001 f86f 	bl	80018ec <turnOn_RED2>
+			if (isButtonPressed(2) == 1) {
+ 800080e:	2002      	movs	r0, #2
+ 8000810:	f7ff fc9c 	bl	800014c <isButtonPressed>
+ 8000814:	4603      	mov	r3, r0
+ 8000816:	2b01      	cmp	r3, #1
+ 8000818:	d102      	bne.n	8000820 <fsm_manual_run+0x118>
+				status_2 = MAN_YELLOW_2;
+ 800081a:	4b3e      	ldr	r3, [pc, #248]	@ (8000914 <fsm_manual_run+0x20c>)
+ 800081c:	220b      	movs	r2, #11
+ 800081e:	601a      	str	r2, [r3, #0]
+			if (isTimerExpired(3) == 1) {
+ 8000820:	2003      	movs	r0, #3
+ 8000822:	f000 ffd7 	bl	80017d4 <isTimerExpired>
+ 8000826:	4603      	mov	r3, r0
+ 8000828:	2b01      	cmp	r3, #1
+ 800082a:	d103      	bne.n	8000834 <fsm_manual_run+0x12c>
+				scanLEDs(99, 5);
+ 800082c:	2105      	movs	r1, #5
+ 800082e:	2063      	movs	r0, #99	@ 0x63
+ 8000830:	f7ff fd36 	bl	80002a0 <scanLEDs>
+			if (isButtonPressed(0) == 1) {
+ 8000834:	2000      	movs	r0, #0
+ 8000836:	f7ff fc89 	bl	800014c <isButtonPressed>
+ 800083a:	4603      	mov	r3, r0
+ 800083c:	2b01      	cmp	r3, #1
+ 800083e:	d141      	bne.n	80008c4 <fsm_manual_run+0x1bc>
+				status = READY;
+ 8000840:	4b32      	ldr	r3, [pc, #200]	@ (800090c <fsm_manual_run+0x204>)
+ 8000842:	220f      	movs	r2, #15
+ 8000844:	601a      	str	r2, [r3, #0]
+			break;
+ 8000846:	e03d      	b.n	80008c4 <fsm_manual_run+0x1bc>
+			turnOn_YELLOW2();
+ 8000848:	f001 f880 	bl	800194c <turnOn_YELLOW2>
+			if (isButtonPressed(2) == 1) {
+ 800084c:	2002      	movs	r0, #2
+ 800084e:	f7ff fc7d 	bl	800014c <isButtonPressed>
+ 8000852:	4603      	mov	r3, r0
+ 8000854:	2b01      	cmp	r3, #1
+ 8000856:	d102      	bne.n	800085e <fsm_manual_run+0x156>
+				status_2 = MAN_GREEN_2;
+ 8000858:	4b2e      	ldr	r3, [pc, #184]	@ (8000914 <fsm_manual_run+0x20c>)
+ 800085a:	220a      	movs	r2, #10
+ 800085c:	601a      	str	r2, [r3, #0]
+			if (isTimerExpired(3) == 1) {
+ 800085e:	2003      	movs	r0, #3
+ 8000860:	f000 ffb8 	bl	80017d4 <isTimerExpired>
+ 8000864:	4603      	mov	r3, r0
+ 8000866:	2b01      	cmp	r3, #1
+ 8000868:	d103      	bne.n	8000872 <fsm_manual_run+0x16a>
+				scanLEDs(99, 5);
+ 800086a:	2105      	movs	r1, #5
+ 800086c:	2063      	movs	r0, #99	@ 0x63
+ 800086e:	f7ff fd17 	bl	80002a0 <scanLEDs>
+			if (isButtonPressed(0) == 1) {
+ 8000872:	2000      	movs	r0, #0
+ 8000874:	f7ff fc6a 	bl	800014c <isButtonPressed>
+ 8000878:	4603      	mov	r3, r0
+ 800087a:	2b01      	cmp	r3, #1
+ 800087c:	d124      	bne.n	80008c8 <fsm_manual_run+0x1c0>
+				status = READY;
+ 800087e:	4b23      	ldr	r3, [pc, #140]	@ (800090c <fsm_manual_run+0x204>)
+ 8000880:	220f      	movs	r2, #15
+ 8000882:	601a      	str	r2, [r3, #0]
+			break;
+ 8000884:	e020      	b.n	80008c8 <fsm_manual_run+0x1c0>
+			turnOn_GREEN2();
+ 8000886:	f001 f849 	bl	800191c <turnOn_GREEN2>
+			if (isButtonPressed(2) == 1) {
+ 800088a:	2002      	movs	r0, #2
+ 800088c:	f7ff fc5e 	bl	800014c <isButtonPressed>
+ 8000890:	4603      	mov	r3, r0
+ 8000892:	2b01      	cmp	r3, #1
+ 8000894:	d102      	bne.n	800089c <fsm_manual_run+0x194>
+				status_2 = MAN_RED_2;
+ 8000896:	4b1f      	ldr	r3, [pc, #124]	@ (8000914 <fsm_manual_run+0x20c>)
+ 8000898:	2209      	movs	r2, #9
+ 800089a:	601a      	str	r2, [r3, #0]
+			if (isTimerExpired(3) == 1) {
+ 800089c:	2003      	movs	r0, #3
+ 800089e:	f000 ff99 	bl	80017d4 <isTimerExpired>
+ 80008a2:	4603      	mov	r3, r0
+ 80008a4:	2b01      	cmp	r3, #1
+ 80008a6:	d103      	bne.n	80008b0 <fsm_manual_run+0x1a8>
+				scanLEDs(99, 5);
+ 80008a8:	2105      	movs	r1, #5
+ 80008aa:	2063      	movs	r0, #99	@ 0x63
+ 80008ac:	f7ff fcf8 	bl	80002a0 <scanLEDs>
+			if (isButtonPressed(0) == 1) {
+ 80008b0:	2000      	movs	r0, #0
+ 80008b2:	f7ff fc4b 	bl	800014c <isButtonPressed>
+ 80008b6:	4603      	mov	r3, r0
+ 80008b8:	2b01      	cmp	r3, #1
+ 80008ba:	d107      	bne.n	80008cc <fsm_manual_run+0x1c4>
+				status = READY;
+ 80008bc:	4b13      	ldr	r3, [pc, #76]	@ (800090c <fsm_manual_run+0x204>)
+ 80008be:	220f      	movs	r2, #15
+ 80008c0:	601a      	str	r2, [r3, #0]
+			break;
+ 80008c2:	e003      	b.n	80008cc <fsm_manual_run+0x1c4>
+			break;
+ 80008c4:	bf00      	nop
+ 80008c6:	e01e      	b.n	8000906 <fsm_manual_run+0x1fe>
+			break;
+ 80008c8:	bf00      	nop
+ 80008ca:	e01c      	b.n	8000906 <fsm_manual_run+0x1fe>
+			break;
+ 80008cc:	bf00      	nop
+		break;
+ 80008ce:	e01a      	b.n	8000906 <fsm_manual_run+0x1fe>
+		status = RED_GREEN;
+ 80008d0:	4b0e      	ldr	r3, [pc, #56]	@ (800090c <fsm_manual_run+0x204>)
+ 80008d2:	2202      	movs	r2, #2
+ 80008d4:	601a      	str	r2, [r3, #0]
+		time_1 = TIME_GREEN - 1;
+ 80008d6:	4b10      	ldr	r3, [pc, #64]	@ (8000918 <fsm_manual_run+0x210>)
+ 80008d8:	681b      	ldr	r3, [r3, #0]
+ 80008da:	3b01      	subs	r3, #1
+ 80008dc:	4a0f      	ldr	r2, [pc, #60]	@ (800091c <fsm_manual_run+0x214>)
+ 80008de:	6013      	str	r3, [r2, #0]
+		time_2 = TIME_RED - 1;
+ 80008e0:	4b0f      	ldr	r3, [pc, #60]	@ (8000920 <fsm_manual_run+0x218>)
+ 80008e2:	681b      	ldr	r3, [r3, #0]
+ 80008e4:	3b01      	subs	r3, #1
+ 80008e6:	4a0f      	ldr	r2, [pc, #60]	@ (8000924 <fsm_manual_run+0x21c>)
+ 80008e8:	6013      	str	r3, [r2, #0]
+		setTimer(2, 100);
+ 80008ea:	2164      	movs	r1, #100	@ 0x64
+ 80008ec:	2002      	movs	r0, #2
+ 80008ee:	f000 ff59 	bl	80017a4 <setTimer>
+		setTimer(1, TIME_GREEN * 100);
+ 80008f2:	4b09      	ldr	r3, [pc, #36]	@ (8000918 <fsm_manual_run+0x210>)
+ 80008f4:	681b      	ldr	r3, [r3, #0]
+ 80008f6:	2264      	movs	r2, #100	@ 0x64
+ 80008f8:	fb02 f303 	mul.w	r3, r2, r3
+ 80008fc:	4619      	mov	r1, r3
+ 80008fe:	2001      	movs	r0, #1
+ 8000900:	f000 ff50 	bl	80017a4 <setTimer>
+		break;
+ 8000904:	e000      	b.n	8000908 <fsm_manual_run+0x200>
+		break;
+ 8000906:	bf00      	nop
+	}
+}
+ 8000908:	bf00      	nop
+ 800090a:	bd80      	pop	{r7, pc}
+ 800090c:	200000fc 	.word	0x200000fc
+ 8000910:	20000100 	.word	0x20000100
+ 8000914:	20000104 	.word	0x20000104
+ 8000918:	20000008 	.word	0x20000008
+ 800091c:	20000108 	.word	0x20000108
+ 8000920:	20000000 	.word	0x20000000
+ 8000924:	2000010c 	.word	0x2000010c
+
+08000928 <fsm_setting>:
+ *      Author: admin
+ */
+
+#include"fsm_setting.h"
+
+void fsm_setting() {
+ 8000928:	b580      	push	{r7, lr}
+ 800092a:	af00      	add	r7, sp, #0
+	switch (status) {
+ 800092c:	4b96      	ldr	r3, [pc, #600]	@ (8000b88 <fsm_setting+0x260>)
+ 800092e:	681b      	ldr	r3, [r3, #0]
+ 8000930:	3b10      	subs	r3, #16
+ 8000932:	2b04      	cmp	r3, #4
+ 8000934:	f200 811c 	bhi.w	8000b70 <fsm_setting+0x248>
+ 8000938:	a201      	add	r2, pc, #4	@ (adr r2, 8000940 <fsm_setting+0x18>)
+ 800093a:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 800093e:	bf00      	nop
+ 8000940:	08000955 	.word	0x08000955
+ 8000944:	080009e5 	.word	0x080009e5
+ 8000948:	08000ac3 	.word	0x08000ac3
+ 800094c:	08000b71 	.word	0x08000b71
+ 8000950:	08000b49 	.word	0x08000b49
 
 	case SET_RED:
 
 
 		if (isTimerExpired(6) == 1) {
- 8000734:	2006      	movs	r0, #6
- 8000736:	f001 f84d 	bl	80017d4 <isTimerExpired>
- 800073a:	4603      	mov	r3, r0
- 800073c:	2b01      	cmp	r3, #1
- 800073e:	d10c      	bne.n	800075a <fsm_manual_run+0x52>
+ 8000954:	2006      	movs	r0, #6
+ 8000956:	f000 ff3d 	bl	80017d4 <isTimerExpired>
+ 800095a:	4603      	mov	r3, r0
+ 800095c:	2b01      	cmp	r3, #1
+ 800095e:	d10c      	bne.n	800097a <fsm_setting+0x52>
 			HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
- 8000740:	2140      	movs	r1, #64	@ 0x40
- 8000742:	488a      	ldr	r0, [pc, #552]	@ (800096c <fsm_manual_run+0x264>)
- 8000744:	f001 fc83 	bl	800204e <HAL_GPIO_TogglePin>
+ 8000960:	2140      	movs	r1, #64	@ 0x40
+ 8000962:	488a      	ldr	r0, [pc, #552]	@ (8000b8c <fsm_setting+0x264>)
+ 8000964:	f001 fb73 	bl	800204e <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin(LED_4_GPIO_Port, LED_4_Pin);
- 8000748:	f44f 7100 	mov.w	r1, #512	@ 0x200
- 800074c:	4887      	ldr	r0, [pc, #540]	@ (800096c <fsm_manual_run+0x264>)
- 800074e:	f001 fc7e 	bl	800204e <HAL_GPIO_TogglePin>
+ 8000968:	f44f 7100 	mov.w	r1, #512	@ 0x200
+ 800096c:	4887      	ldr	r0, [pc, #540]	@ (8000b8c <fsm_setting+0x264>)
+ 800096e:	f001 fb6e 	bl	800204e <HAL_GPIO_TogglePin>
 			setTimer(6, 50);
- 8000752:	2132      	movs	r1, #50	@ 0x32
- 8000754:	2006      	movs	r0, #6
- 8000756:	f001 f825 	bl	80017a4 <setTimer>
+ 8000972:	2132      	movs	r1, #50	@ 0x32
+ 8000974:	2006      	movs	r0, #6
+ 8000976:	f000 ff15 	bl	80017a4 <setTimer>
 		}
 
 		if (isButtonPressed(0) == 1) {
- 800075a:	2000      	movs	r0, #0
- 800075c:	f7ff fcf6 	bl	800014c <isButtonPressed>
- 8000760:	4603      	mov	r3, r0
- 8000762:	2b01      	cmp	r3, #1
- 8000764:	d107      	bne.n	8000776 <fsm_manual_run+0x6e>
+ 800097a:	2000      	movs	r0, #0
+ 800097c:	f7ff fbe6 	bl	800014c <isButtonPressed>
+ 8000980:	4603      	mov	r3, r0
+ 8000982:	2b01      	cmp	r3, #1
+ 8000984:	d107      	bne.n	8000996 <fsm_setting+0x6e>
 			status = SET_YELLOW;
- 8000766:	4b80      	ldr	r3, [pc, #512]	@ (8000968 <fsm_manual_run+0x260>)
- 8000768:	2212      	movs	r2, #18
- 800076a:	601a      	str	r2, [r3, #0]
+ 8000986:	4b80      	ldr	r3, [pc, #512]	@ (8000b88 <fsm_setting+0x260>)
+ 8000988:	2212      	movs	r2, #18
+ 800098a:	601a      	str	r2, [r3, #0]
 			turnOff();
- 800076c:	f001 f906 	bl	800197c <turnOff>
+ 800098c:	f000 fff6 	bl	800197c <turnOff>
 			count = 0;
- 8000770:	4b7f      	ldr	r3, [pc, #508]	@ (8000970 <fsm_manual_run+0x268>)
- 8000772:	2200      	movs	r2, #0
- 8000774:	601a      	str	r2, [r3, #0]
+ 8000990:	4b7f      	ldr	r3, [pc, #508]	@ (8000b90 <fsm_setting+0x268>)
+ 8000992:	2200      	movs	r2, #0
+ 8000994:	601a      	str	r2, [r3, #0]
 
 		}
 		if (isTimerExpired(3) == 1) {
- 8000776:	2003      	movs	r0, #3
- 8000778:	f001 f82c 	bl	80017d4 <isTimerExpired>
- 800077c:	4603      	mov	r3, r0
- 800077e:	2b01      	cmp	r3, #1
- 8000780:	d105      	bne.n	800078e <fsm_manual_run+0x86>
+ 8000996:	2003      	movs	r0, #3
+ 8000998:	f000 ff1c 	bl	80017d4 <isTimerExpired>
+ 800099c:	4603      	mov	r3, r0
+ 800099e:	2b01      	cmp	r3, #1
+ 80009a0:	d105      	bne.n	80009ae <fsm_setting+0x86>
 
 			scanLEDs(count, 2);
- 8000782:	4b7b      	ldr	r3, [pc, #492]	@ (8000970 <fsm_manual_run+0x268>)
- 8000784:	681b      	ldr	r3, [r3, #0]
- 8000786:	2102      	movs	r1, #2
- 8000788:	4618      	mov	r0, r3
- 800078a:	f7ff fd89 	bl	80002a0 <scanLEDs>
+ 80009a2:	4b7b      	ldr	r3, [pc, #492]	@ (8000b90 <fsm_setting+0x268>)
+ 80009a4:	681b      	ldr	r3, [r3, #0]
+ 80009a6:	2102      	movs	r1, #2
+ 80009a8:	4618      	mov	r0, r3
+ 80009aa:	f7ff fc79 	bl	80002a0 <scanLEDs>
 		}
 		if (isButtonPressed(1) == 1) {
- 800078e:	2001      	movs	r0, #1
- 8000790:	f7ff fcdc 	bl	800014c <isButtonPressed>
- 8000794:	4603      	mov	r3, r0
- 8000796:	2b01      	cmp	r3, #1
- 8000798:	d104      	bne.n	80007a4 <fsm_manual_run+0x9c>
+ 80009ae:	2001      	movs	r0, #1
+ 80009b0:	f7ff fbcc 	bl	800014c <isButtonPressed>
+ 80009b4:	4603      	mov	r3, r0
+ 80009b6:	2b01      	cmp	r3, #1
+ 80009b8:	d104      	bne.n	80009c4 <fsm_setting+0x9c>
 			count++;
- 800079a:	4b75      	ldr	r3, [pc, #468]	@ (8000970 <fsm_manual_run+0x268>)
- 800079c:	681b      	ldr	r3, [r3, #0]
- 800079e:	3301      	adds	r3, #1
- 80007a0:	4a73      	ldr	r2, [pc, #460]	@ (8000970 <fsm_manual_run+0x268>)
- 80007a2:	6013      	str	r3, [r2, #0]
+ 80009ba:	4b75      	ldr	r3, [pc, #468]	@ (8000b90 <fsm_setting+0x268>)
+ 80009bc:	681b      	ldr	r3, [r3, #0]
+ 80009be:	3301      	adds	r3, #1
+ 80009c0:	4a73      	ldr	r2, [pc, #460]	@ (8000b90 <fsm_setting+0x268>)
+ 80009c2:	6013      	str	r3, [r2, #0]
 
 		}
 		if (isButtonPressed(2) == 1) {
- 80007a4:	2002      	movs	r0, #2
- 80007a6:	f7ff fcd1 	bl	800014c <isButtonPressed>
- 80007aa:	4603      	mov	r3, r0
- 80007ac:	2b01      	cmp	r3, #1
- 80007ae:	f040 80d1 	bne.w	8000954 <fsm_manual_run+0x24c>
+ 80009c4:	2002      	movs	r0, #2
+ 80009c6:	f7ff fbc1 	bl	800014c <isButtonPressed>
+ 80009ca:	4603      	mov	r3, r0
+ 80009cc:	2b01      	cmp	r3, #1
+ 80009ce:	f040 80d1 	bne.w	8000b74 <fsm_setting+0x24c>
 			TIME_RED = count;
- 80007b2:	4b6f      	ldr	r3, [pc, #444]	@ (8000970 <fsm_manual_run+0x268>)
- 80007b4:	681b      	ldr	r3, [r3, #0]
- 80007b6:	4a6f      	ldr	r2, [pc, #444]	@ (8000974 <fsm_manual_run+0x26c>)
- 80007b8:	6013      	str	r3, [r2, #0]
+ 80009d2:	4b6f      	ldr	r3, [pc, #444]	@ (8000b90 <fsm_setting+0x268>)
+ 80009d4:	681b      	ldr	r3, [r3, #0]
+ 80009d6:	4a6f      	ldr	r2, [pc, #444]	@ (8000b94 <fsm_setting+0x26c>)
+ 80009d8:	6013      	str	r3, [r2, #0]
 			time_1 = count;
- 80007ba:	4b6d      	ldr	r3, [pc, #436]	@ (8000970 <fsm_manual_run+0x268>)
- 80007bc:	681b      	ldr	r3, [r3, #0]
- 80007be:	4a6e      	ldr	r2, [pc, #440]	@ (8000978 <fsm_manual_run+0x270>)
- 80007c0:	6013      	str	r3, [r2, #0]
+ 80009da:	4b6d      	ldr	r3, [pc, #436]	@ (8000b90 <fsm_setting+0x268>)
+ 80009dc:	681b      	ldr	r3, [r3, #0]
+ 80009de:	4a6e      	ldr	r2, [pc, #440]	@ (8000b98 <fsm_setting+0x270>)
+ 80009e0:	6013      	str	r3, [r2, #0]
 		}
 		break;
- 80007c2:	e0c7      	b.n	8000954 <fsm_manual_run+0x24c>
+ 80009e2:	e0c7      	b.n	8000b74 <fsm_setting+0x24c>
 	case SET_GREEN:
 
 
 		if (isTimerExpired(6) == 1) {
- 80007c4:	2006      	movs	r0, #6
- 80007c6:	f001 f805 	bl	80017d4 <isTimerExpired>
- 80007ca:	4603      	mov	r3, r0
- 80007cc:	2b01      	cmp	r3, #1
- 80007ce:	d10d      	bne.n	80007ec <fsm_manual_run+0xe4>
+ 80009e4:	2006      	movs	r0, #6
+ 80009e6:	f000 fef5 	bl	80017d4 <isTimerExpired>
+ 80009ea:	4603      	mov	r3, r0
+ 80009ec:	2b01      	cmp	r3, #1
+ 80009ee:	d10d      	bne.n	8000a0c <fsm_setting+0xe4>
 			HAL_GPIO_TogglePin(LED_6_GPIO_Port, LED_6_Pin);
- 80007d0:	f44f 6100 	mov.w	r1, #2048	@ 0x800
- 80007d4:	4865      	ldr	r0, [pc, #404]	@ (800096c <fsm_manual_run+0x264>)
- 80007d6:	f001 fc3a 	bl	800204e <HAL_GPIO_TogglePin>
+ 80009f0:	f44f 6100 	mov.w	r1, #2048	@ 0x800
+ 80009f4:	4865      	ldr	r0, [pc, #404]	@ (8000b8c <fsm_setting+0x264>)
+ 80009f6:	f001 fb2a 	bl	800204e <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin(LED_3_GPIO_Port, LED_3_Pin);
- 80007da:	f44f 7180 	mov.w	r1, #256	@ 0x100
- 80007de:	4863      	ldr	r0, [pc, #396]	@ (800096c <fsm_manual_run+0x264>)
- 80007e0:	f001 fc35 	bl	800204e <HAL_GPIO_TogglePin>
+ 80009fa:	f44f 7180 	mov.w	r1, #256	@ 0x100
+ 80009fe:	4863      	ldr	r0, [pc, #396]	@ (8000b8c <fsm_setting+0x264>)
+ 8000a00:	f001 fb25 	bl	800204e <HAL_GPIO_TogglePin>
 			setTimer(6, 50);
- 80007e4:	2132      	movs	r1, #50	@ 0x32
- 80007e6:	2006      	movs	r0, #6
- 80007e8:	f000 ffdc 	bl	80017a4 <setTimer>
+ 8000a04:	2132      	movs	r1, #50	@ 0x32
+ 8000a06:	2006      	movs	r0, #6
+ 8000a08:	f000 fecc 	bl	80017a4 <setTimer>
 		}
 
 		if (isTimerExpired(3) == 1) {
- 80007ec:	2003      	movs	r0, #3
- 80007ee:	f000 fff1 	bl	80017d4 <isTimerExpired>
- 80007f2:	4603      	mov	r3, r0
- 80007f4:	2b01      	cmp	r3, #1
- 80007f6:	d105      	bne.n	8000804 <fsm_manual_run+0xfc>
+ 8000a0c:	2003      	movs	r0, #3
+ 8000a0e:	f000 fee1 	bl	80017d4 <isTimerExpired>
+ 8000a12:	4603      	mov	r3, r0
+ 8000a14:	2b01      	cmp	r3, #1
+ 8000a16:	d105      	bne.n	8000a24 <fsm_setting+0xfc>
 			scanLEDs(count, 4);
- 80007f8:	4b5d      	ldr	r3, [pc, #372]	@ (8000970 <fsm_manual_run+0x268>)
- 80007fa:	681b      	ldr	r3, [r3, #0]
- 80007fc:	2104      	movs	r1, #4
- 80007fe:	4618      	mov	r0, r3
- 8000800:	f7ff fd4e 	bl	80002a0 <scanLEDs>
+ 8000a18:	4b5d      	ldr	r3, [pc, #372]	@ (8000b90 <fsm_setting+0x268>)
+ 8000a1a:	681b      	ldr	r3, [r3, #0]
+ 8000a1c:	2104      	movs	r1, #4
+ 8000a1e:	4618      	mov	r0, r3
+ 8000a20:	f7ff fc3e 	bl	80002a0 <scanLEDs>
 		}
 
 		if (isButtonPressed(1) == 1) {
- 8000804:	2001      	movs	r0, #1
- 8000806:	f7ff fca1 	bl	800014c <isButtonPressed>
- 800080a:	4603      	mov	r3, r0
- 800080c:	2b01      	cmp	r3, #1
- 800080e:	d104      	bne.n	800081a <fsm_manual_run+0x112>
+ 8000a24:	2001      	movs	r0, #1
+ 8000a26:	f7ff fb91 	bl	800014c <isButtonPressed>
+ 8000a2a:	4603      	mov	r3, r0
+ 8000a2c:	2b01      	cmp	r3, #1
+ 8000a2e:	d104      	bne.n	8000a3a <fsm_setting+0x112>
 			count++;
- 8000810:	4b57      	ldr	r3, [pc, #348]	@ (8000970 <fsm_manual_run+0x268>)
- 8000812:	681b      	ldr	r3, [r3, #0]
- 8000814:	3301      	adds	r3, #1
- 8000816:	4a56      	ldr	r2, [pc, #344]	@ (8000970 <fsm_manual_run+0x268>)
- 8000818:	6013      	str	r3, [r2, #0]
+ 8000a30:	4b57      	ldr	r3, [pc, #348]	@ (8000b90 <fsm_setting+0x268>)
+ 8000a32:	681b      	ldr	r3, [r3, #0]
+ 8000a34:	3301      	adds	r3, #1
+ 8000a36:	4a56      	ldr	r2, [pc, #344]	@ (8000b90 <fsm_setting+0x268>)
+ 8000a38:	6013      	str	r3, [r2, #0]
 
 		}
 		if (isButtonPressed(2) == 1) {
- 800081a:	2002      	movs	r0, #2
- 800081c:	f7ff fc96 	bl	800014c <isButtonPressed>
- 8000820:	4603      	mov	r3, r0
- 8000822:	2b01      	cmp	r3, #1
- 8000824:	d107      	bne.n	8000836 <fsm_manual_run+0x12e>
+ 8000a3a:	2002      	movs	r0, #2
+ 8000a3c:	f7ff fb86 	bl	800014c <isButtonPressed>
+ 8000a40:	4603      	mov	r3, r0
+ 8000a42:	2b01      	cmp	r3, #1
+ 8000a44:	d107      	bne.n	8000a56 <fsm_setting+0x12e>
 			TIME_GREEN = count;
- 8000826:	4b52      	ldr	r3, [pc, #328]	@ (8000970 <fsm_manual_run+0x268>)
- 8000828:	681b      	ldr	r3, [r3, #0]
- 800082a:	4a54      	ldr	r2, [pc, #336]	@ (800097c <fsm_manual_run+0x274>)
- 800082c:	6013      	str	r3, [r2, #0]
+ 8000a46:	4b52      	ldr	r3, [pc, #328]	@ (8000b90 <fsm_setting+0x268>)
+ 8000a48:	681b      	ldr	r3, [r3, #0]
+ 8000a4a:	4a54      	ldr	r2, [pc, #336]	@ (8000b9c <fsm_setting+0x274>)
+ 8000a4c:	6013      	str	r3, [r2, #0]
 			time_1 = count;
- 800082e:	4b50      	ldr	r3, [pc, #320]	@ (8000970 <fsm_manual_run+0x268>)
- 8000830:	681b      	ldr	r3, [r3, #0]
- 8000832:	4a51      	ldr	r2, [pc, #324]	@ (8000978 <fsm_manual_run+0x270>)
- 8000834:	6013      	str	r3, [r2, #0]
+ 8000a4e:	4b50      	ldr	r3, [pc, #320]	@ (8000b90 <fsm_setting+0x268>)
+ 8000a50:	681b      	ldr	r3, [r3, #0]
+ 8000a52:	4a51      	ldr	r2, [pc, #324]	@ (8000b98 <fsm_setting+0x270>)
+ 8000a54:	6013      	str	r3, [r2, #0]
 		}
 		if (isButtonPressed(0) == 1) {
- 8000836:	2000      	movs	r0, #0
- 8000838:	f7ff fc88 	bl	800014c <isButtonPressed>
- 800083c:	4603      	mov	r3, r0
- 800083e:	2b01      	cmp	r3, #1
- 8000840:	f040 808a 	bne.w	8000958 <fsm_manual_run+0x250>
+ 8000a56:	2000      	movs	r0, #0
+ 8000a58:	f7ff fb78 	bl	800014c <isButtonPressed>
+ 8000a5c:	4603      	mov	r3, r0
+ 8000a5e:	2b01      	cmp	r3, #1
+ 8000a60:	f040 808a 	bne.w	8000b78 <fsm_setting+0x250>
 			count = 0;
- 8000844:	4b4a      	ldr	r3, [pc, #296]	@ (8000970 <fsm_manual_run+0x268>)
- 8000846:	2200      	movs	r2, #0
- 8000848:	601a      	str	r2, [r3, #0]
+ 8000a64:	4b4a      	ldr	r3, [pc, #296]	@ (8000b90 <fsm_setting+0x268>)
+ 8000a66:	2200      	movs	r2, #0
+ 8000a68:	601a      	str	r2, [r3, #0]
 			if (TIME_RED == TIME_YELLOW + TIME_GREEN) {
- 800084a:	4b4d      	ldr	r3, [pc, #308]	@ (8000980 <fsm_manual_run+0x278>)
- 800084c:	681a      	ldr	r2, [r3, #0]
- 800084e:	4b4b      	ldr	r3, [pc, #300]	@ (800097c <fsm_manual_run+0x274>)
- 8000850:	681b      	ldr	r3, [r3, #0]
- 8000852:	441a      	add	r2, r3
- 8000854:	4b47      	ldr	r3, [pc, #284]	@ (8000974 <fsm_manual_run+0x26c>)
- 8000856:	681b      	ldr	r3, [r3, #0]
- 8000858:	429a      	cmp	r2, r3
- 800085a:	d11a      	bne.n	8000892 <fsm_manual_run+0x18a>
+ 8000a6a:	4b4d      	ldr	r3, [pc, #308]	@ (8000ba0 <fsm_setting+0x278>)
+ 8000a6c:	681a      	ldr	r2, [r3, #0]
+ 8000a6e:	4b4b      	ldr	r3, [pc, #300]	@ (8000b9c <fsm_setting+0x274>)
+ 8000a70:	681b      	ldr	r3, [r3, #0]
+ 8000a72:	441a      	add	r2, r3
+ 8000a74:	4b47      	ldr	r3, [pc, #284]	@ (8000b94 <fsm_setting+0x26c>)
+ 8000a76:	681b      	ldr	r3, [r3, #0]
+ 8000a78:	429a      	cmp	r2, r3
+ 8000a7a:	d11a      	bne.n	8000ab2 <fsm_setting+0x18a>
 				status = RED_GREEN;
- 800085c:	4b42      	ldr	r3, [pc, #264]	@ (8000968 <fsm_manual_run+0x260>)
- 800085e:	2202      	movs	r2, #2
- 8000860:	601a      	str	r2, [r3, #0]
+ 8000a7c:	4b42      	ldr	r3, [pc, #264]	@ (8000b88 <fsm_setting+0x260>)
+ 8000a7e:	2202      	movs	r2, #2
+ 8000a80:	601a      	str	r2, [r3, #0]
 				time_1 = TIME_GREEN - 1;
- 8000862:	4b46      	ldr	r3, [pc, #280]	@ (800097c <fsm_manual_run+0x274>)
- 8000864:	681b      	ldr	r3, [r3, #0]
- 8000866:	3b01      	subs	r3, #1
- 8000868:	4a43      	ldr	r2, [pc, #268]	@ (8000978 <fsm_manual_run+0x270>)
- 800086a:	6013      	str	r3, [r2, #0]
+ 8000a82:	4b46      	ldr	r3, [pc, #280]	@ (8000b9c <fsm_setting+0x274>)
+ 8000a84:	681b      	ldr	r3, [r3, #0]
+ 8000a86:	3b01      	subs	r3, #1
+ 8000a88:	4a43      	ldr	r2, [pc, #268]	@ (8000b98 <fsm_setting+0x270>)
+ 8000a8a:	6013      	str	r3, [r2, #0]
 				time_2 = TIME_RED - 1;
- 800086c:	4b41      	ldr	r3, [pc, #260]	@ (8000974 <fsm_manual_run+0x26c>)
- 800086e:	681b      	ldr	r3, [r3, #0]
- 8000870:	3b01      	subs	r3, #1
- 8000872:	4a44      	ldr	r2, [pc, #272]	@ (8000984 <fsm_manual_run+0x27c>)
- 8000874:	6013      	str	r3, [r2, #0]
+ 8000a8c:	4b41      	ldr	r3, [pc, #260]	@ (8000b94 <fsm_setting+0x26c>)
+ 8000a8e:	681b      	ldr	r3, [r3, #0]
+ 8000a90:	3b01      	subs	r3, #1
+ 8000a92:	4a44      	ldr	r2, [pc, #272]	@ (8000ba4 <fsm_setting+0x27c>)
+ 8000a94:	6013      	str	r3, [r2, #0]
 				setTimer(2, 100);
- 8000876:	2164      	movs	r1, #100	@ 0x64
- 8000878:	2002      	movs	r0, #2
- 800087a:	f000 ff93 	bl	80017a4 <setTimer>
+ 8000a96:	2164      	movs	r1, #100	@ 0x64
+ 8000a98:	2002      	movs	r0, #2
+ 8000a9a:	f000 fe83 	bl	80017a4 <setTimer>
 				setTimer(1, TIME_GREEN * 100);
- 800087e:	4b3f      	ldr	r3, [pc, #252]	@ (800097c <fsm_manual_run+0x274>)
- 8000880:	681b      	ldr	r3, [r3, #0]
- 8000882:	2264      	movs	r2, #100	@ 0x64
- 8000884:	fb02 f303 	mul.w	r3, r2, r3
- 8000888:	4619      	mov	r1, r3
- 800088a:	2001      	movs	r0, #1
- 800088c:	f000 ff8a 	bl	80017a4 <setTimer>
+ 8000a9e:	4b3f      	ldr	r3, [pc, #252]	@ (8000b9c <fsm_setting+0x274>)
+ 8000aa0:	681b      	ldr	r3, [r3, #0]
+ 8000aa2:	2264      	movs	r2, #100	@ 0x64
+ 8000aa4:	fb02 f303 	mul.w	r3, r2, r3
+ 8000aa8:	4619      	mov	r1, r3
+ 8000aaa:	2001      	movs	r0, #1
+ 8000aac:	f000 fe7a 	bl	80017a4 <setTimer>
 				status = ERR;
 				setTimer(4, 100);
 			}
 
 		}
 		break;
- 8000890:	e062      	b.n	8000958 <fsm_manual_run+0x250>
+ 8000ab0:	e062      	b.n	8000b78 <fsm_setting+0x250>
 				status = ERR;
- 8000892:	4b35      	ldr	r3, [pc, #212]	@ (8000968 <fsm_manual_run+0x260>)
- 8000894:	2214      	movs	r2, #20
- 8000896:	601a      	str	r2, [r3, #0]
+ 8000ab2:	4b35      	ldr	r3, [pc, #212]	@ (8000b88 <fsm_setting+0x260>)
+ 8000ab4:	2214      	movs	r2, #20
+ 8000ab6:	601a      	str	r2, [r3, #0]
 				setTimer(4, 100);
- 8000898:	2164      	movs	r1, #100	@ 0x64
- 800089a:	2004      	movs	r0, #4
- 800089c:	f000 ff82 	bl	80017a4 <setTimer>
+ 8000ab8:	2164      	movs	r1, #100	@ 0x64
+ 8000aba:	2004      	movs	r0, #4
+ 8000abc:	f000 fe72 	bl	80017a4 <setTimer>
 		break;
- 80008a0:	e05a      	b.n	8000958 <fsm_manual_run+0x250>
+ 8000ac0:	e05a      	b.n	8000b78 <fsm_setting+0x250>
 	case SET_YELLOW:
 
 
 		if (isTimerExpired(6) == 1) {
- 80008a2:	2006      	movs	r0, #6
- 80008a4:	f000 ff96 	bl	80017d4 <isTimerExpired>
- 80008a8:	4603      	mov	r3, r0
- 80008aa:	2b01      	cmp	r3, #1
- 80008ac:	d10c      	bne.n	80008c8 <fsm_manual_run+0x1c0>
+ 8000ac2:	2006      	movs	r0, #6
+ 8000ac4:	f000 fe86 	bl	80017d4 <isTimerExpired>
+ 8000ac8:	4603      	mov	r3, r0
+ 8000aca:	2b01      	cmp	r3, #1
+ 8000acc:	d10c      	bne.n	8000ae8 <fsm_setting+0x1c0>
 			HAL_GPIO_TogglePin(LED_2_GPIO_Port, LED_2_Pin);
- 80008ae:	2180      	movs	r1, #128	@ 0x80
- 80008b0:	482e      	ldr	r0, [pc, #184]	@ (800096c <fsm_manual_run+0x264>)
- 80008b2:	f001 fbcc 	bl	800204e <HAL_GPIO_TogglePin>
+ 8000ace:	2180      	movs	r1, #128	@ 0x80
+ 8000ad0:	482e      	ldr	r0, [pc, #184]	@ (8000b8c <fsm_setting+0x264>)
+ 8000ad2:	f001 fabc 	bl	800204e <HAL_GPIO_TogglePin>
 			HAL_GPIO_TogglePin(LED_5_GPIO_Port, LED_5_Pin);
- 80008b6:	f44f 6180 	mov.w	r1, #1024	@ 0x400
- 80008ba:	482c      	ldr	r0, [pc, #176]	@ (800096c <fsm_manual_run+0x264>)
- 80008bc:	f001 fbc7 	bl	800204e <HAL_GPIO_TogglePin>
+ 8000ad6:	f44f 6180 	mov.w	r1, #1024	@ 0x400
+ 8000ada:	482c      	ldr	r0, [pc, #176]	@ (8000b8c <fsm_setting+0x264>)
+ 8000adc:	f001 fab7 	bl	800204e <HAL_GPIO_TogglePin>
 			setTimer(6, 50);
- 80008c0:	2132      	movs	r1, #50	@ 0x32
- 80008c2:	2006      	movs	r0, #6
- 80008c4:	f000 ff6e 	bl	80017a4 <setTimer>
+ 8000ae0:	2132      	movs	r1, #50	@ 0x32
+ 8000ae2:	2006      	movs	r0, #6
+ 8000ae4:	f000 fe5e 	bl	80017a4 <setTimer>
 		}
 
 		if (isTimerExpired(3) == 1) {
- 80008c8:	2003      	movs	r0, #3
- 80008ca:	f000 ff83 	bl	80017d4 <isTimerExpired>
- 80008ce:	4603      	mov	r3, r0
- 80008d0:	2b01      	cmp	r3, #1
- 80008d2:	d105      	bne.n	80008e0 <fsm_manual_run+0x1d8>
+ 8000ae8:	2003      	movs	r0, #3
+ 8000aea:	f000 fe73 	bl	80017d4 <isTimerExpired>
+ 8000aee:	4603      	mov	r3, r0
+ 8000af0:	2b01      	cmp	r3, #1
+ 8000af2:	d105      	bne.n	8000b00 <fsm_setting+0x1d8>
 
 			scanLEDs(count, 3);
- 80008d4:	4b26      	ldr	r3, [pc, #152]	@ (8000970 <fsm_manual_run+0x268>)
- 80008d6:	681b      	ldr	r3, [r3, #0]
- 80008d8:	2103      	movs	r1, #3
- 80008da:	4618      	mov	r0, r3
- 80008dc:	f7ff fce0 	bl	80002a0 <scanLEDs>
+ 8000af4:	4b26      	ldr	r3, [pc, #152]	@ (8000b90 <fsm_setting+0x268>)
+ 8000af6:	681b      	ldr	r3, [r3, #0]
+ 8000af8:	2103      	movs	r1, #3
+ 8000afa:	4618      	mov	r0, r3
+ 8000afc:	f7ff fbd0 	bl	80002a0 <scanLEDs>
 
 		}
 		if (isButtonPressed(0) == 1) {
- 80008e0:	2000      	movs	r0, #0
- 80008e2:	f7ff fc33 	bl	800014c <isButtonPressed>
- 80008e6:	4603      	mov	r3, r0
- 80008e8:	2b01      	cmp	r3, #1
- 80008ea:	d107      	bne.n	80008fc <fsm_manual_run+0x1f4>
+ 8000b00:	2000      	movs	r0, #0
+ 8000b02:	f7ff fb23 	bl	800014c <isButtonPressed>
+ 8000b06:	4603      	mov	r3, r0
+ 8000b08:	2b01      	cmp	r3, #1
+ 8000b0a:	d107      	bne.n	8000b1c <fsm_setting+0x1f4>
 			status = SET_GREEN;
- 80008ec:	4b1e      	ldr	r3, [pc, #120]	@ (8000968 <fsm_manual_run+0x260>)
- 80008ee:	2211      	movs	r2, #17
- 80008f0:	601a      	str	r2, [r3, #0]
+ 8000b0c:	4b1e      	ldr	r3, [pc, #120]	@ (8000b88 <fsm_setting+0x260>)
+ 8000b0e:	2211      	movs	r2, #17
+ 8000b10:	601a      	str	r2, [r3, #0]
 			turnOff();
- 80008f2:	f001 f843 	bl	800197c <turnOff>
+ 8000b12:	f000 ff33 	bl	800197c <turnOff>
 			count = 0;
- 80008f6:	4b1e      	ldr	r3, [pc, #120]	@ (8000970 <fsm_manual_run+0x268>)
- 80008f8:	2200      	movs	r2, #0
- 80008fa:	601a      	str	r2, [r3, #0]
+ 8000b16:	4b1e      	ldr	r3, [pc, #120]	@ (8000b90 <fsm_setting+0x268>)
+ 8000b18:	2200      	movs	r2, #0
+ 8000b1a:	601a      	str	r2, [r3, #0]
 		}
 		if (isButtonPressed(1) == 1) {
- 80008fc:	2001      	movs	r0, #1
- 80008fe:	f7ff fc25 	bl	800014c <isButtonPressed>
- 8000902:	4603      	mov	r3, r0
- 8000904:	2b01      	cmp	r3, #1
- 8000906:	d104      	bne.n	8000912 <fsm_manual_run+0x20a>
+ 8000b1c:	2001      	movs	r0, #1
+ 8000b1e:	f7ff fb15 	bl	800014c <isButtonPressed>
+ 8000b22:	4603      	mov	r3, r0
+ 8000b24:	2b01      	cmp	r3, #1
+ 8000b26:	d104      	bne.n	8000b32 <fsm_setting+0x20a>
 			count++;
- 8000908:	4b19      	ldr	r3, [pc, #100]	@ (8000970 <fsm_manual_run+0x268>)
- 800090a:	681b      	ldr	r3, [r3, #0]
- 800090c:	3301      	adds	r3, #1
- 800090e:	4a18      	ldr	r2, [pc, #96]	@ (8000970 <fsm_manual_run+0x268>)
- 8000910:	6013      	str	r3, [r2, #0]
+ 8000b28:	4b19      	ldr	r3, [pc, #100]	@ (8000b90 <fsm_setting+0x268>)
+ 8000b2a:	681b      	ldr	r3, [r3, #0]
+ 8000b2c:	3301      	adds	r3, #1
+ 8000b2e:	4a18      	ldr	r2, [pc, #96]	@ (8000b90 <fsm_setting+0x268>)
+ 8000b30:	6013      	str	r3, [r2, #0]
 
 		}
 		if (isButtonPressed(2) == 1) {
- 8000912:	2002      	movs	r0, #2
- 8000914:	f7ff fc1a 	bl	800014c <isButtonPressed>
- 8000918:	4603      	mov	r3, r0
- 800091a:	2b01      	cmp	r3, #1
- 800091c:	d11e      	bne.n	800095c <fsm_manual_run+0x254>
+ 8000b32:	2002      	movs	r0, #2
+ 8000b34:	f7ff fb0a 	bl	800014c <isButtonPressed>
+ 8000b38:	4603      	mov	r3, r0
+ 8000b3a:	2b01      	cmp	r3, #1
+ 8000b3c:	d11e      	bne.n	8000b7c <fsm_setting+0x254>
 			TIME_YELLOW = count;
- 800091e:	4b14      	ldr	r3, [pc, #80]	@ (8000970 <fsm_manual_run+0x268>)
- 8000920:	681b      	ldr	r3, [r3, #0]
- 8000922:	4a17      	ldr	r2, [pc, #92]	@ (8000980 <fsm_manual_run+0x278>)
- 8000924:	6013      	str	r3, [r2, #0]
+ 8000b3e:	4b14      	ldr	r3, [pc, #80]	@ (8000b90 <fsm_setting+0x268>)
+ 8000b40:	681b      	ldr	r3, [r3, #0]
+ 8000b42:	4a17      	ldr	r2, [pc, #92]	@ (8000ba0 <fsm_setting+0x278>)
+ 8000b44:	6013      	str	r3, [r2, #0]
 
 		}
 		break;
- 8000926:	e019      	b.n	800095c <fsm_manual_run+0x254>
+ 8000b46:	e019      	b.n	8000b7c <fsm_setting+0x254>
 	case ERR:
 		if (isTimerExpired(3)) {
- 8000928:	2003      	movs	r0, #3
- 800092a:	f000 ff53 	bl	80017d4 <isTimerExpired>
- 800092e:	4603      	mov	r3, r0
- 8000930:	2b00      	cmp	r3, #0
- 8000932:	d003      	beq.n	800093c <fsm_manual_run+0x234>
+ 8000b48:	2003      	movs	r0, #3
+ 8000b4a:	f000 fe43 	bl	80017d4 <isTimerExpired>
+ 8000b4e:	4603      	mov	r3, r0
+ 8000b50:	2b00      	cmp	r3, #0
+ 8000b52:	d003      	beq.n	8000b5c <fsm_setting+0x234>
 			scanLEDs(99, 99);
- 8000934:	2163      	movs	r1, #99	@ 0x63
- 8000936:	2063      	movs	r0, #99	@ 0x63
- 8000938:	f7ff fcb2 	bl	80002a0 <scanLEDs>
+ 8000b54:	2163      	movs	r1, #99	@ 0x63
+ 8000b56:	2063      	movs	r0, #99	@ 0x63
+ 8000b58:	f7ff fba2 	bl	80002a0 <scanLEDs>
 		}
 		if (isTimerExpired(4)) {
- 800093c:	2004      	movs	r0, #4
- 800093e:	f000 ff49 	bl	80017d4 <isTimerExpired>
- 8000942:	4603      	mov	r3, r0
- 8000944:	2b00      	cmp	r3, #0
- 8000946:	d00b      	beq.n	8000960 <fsm_manual_run+0x258>
+ 8000b5c:	2004      	movs	r0, #4
+ 8000b5e:	f000 fe39 	bl	80017d4 <isTimerExpired>
+ 8000b62:	4603      	mov	r3, r0
+ 8000b64:	2b00      	cmp	r3, #0
+ 8000b66:	d00b      	beq.n	8000b80 <fsm_setting+0x258>
 			status = INIT;
- 8000948:	4b07      	ldr	r3, [pc, #28]	@ (8000968 <fsm_manual_run+0x260>)
- 800094a:	2201      	movs	r2, #1
- 800094c:	601a      	str	r2, [r3, #0]
+ 8000b68:	4b07      	ldr	r3, [pc, #28]	@ (8000b88 <fsm_setting+0x260>)
+ 8000b6a:	2201      	movs	r2, #1
+ 8000b6c:	601a      	str	r2, [r3, #0]
 		}
 		break;
- 800094e:	e007      	b.n	8000960 <fsm_manual_run+0x258>
+ 8000b6e:	e007      	b.n	8000b80 <fsm_setting+0x258>
 	default:
 		break;
- 8000950:	bf00      	nop
- 8000952:	e006      	b.n	8000962 <fsm_manual_run+0x25a>
+ 8000b70:	bf00      	nop
+ 8000b72:	e006      	b.n	8000b82 <fsm_setting+0x25a>
 		break;
- 8000954:	bf00      	nop
- 8000956:	e004      	b.n	8000962 <fsm_manual_run+0x25a>
+ 8000b74:	bf00      	nop
+ 8000b76:	e004      	b.n	8000b82 <fsm_setting+0x25a>
 		break;
- 8000958:	bf00      	nop
- 800095a:	e002      	b.n	8000962 <fsm_manual_run+0x25a>
+ 8000b78:	bf00      	nop
+ 8000b7a:	e002      	b.n	8000b82 <fsm_setting+0x25a>
 		break;
- 800095c:	bf00      	nop
- 800095e:	e000      	b.n	8000962 <fsm_manual_run+0x25a>
+ 8000b7c:	bf00      	nop
+ 8000b7e:	e000      	b.n	8000b82 <fsm_setting+0x25a>
 		break;
- 8000960:	bf00      	nop
+ 8000b80:	bf00      	nop
 	}
 }
- 8000962:	bf00      	nop
- 8000964:	bd80      	pop	{r7, pc}
- 8000966:	bf00      	nop
- 8000968:	200000fc 	.word	0x200000fc
- 800096c:	40010800 	.word	0x40010800
- 8000970:	20000110 	.word	0x20000110
- 8000974:	20000000 	.word	0x20000000
- 8000978:	20000108 	.word	0x20000108
- 800097c:	20000008 	.word	0x20000008
- 8000980:	20000004 	.word	0x20000004
- 8000984:	2000010c 	.word	0x2000010c
-
-08000988 <fsm_setting>:
- *  Created on: Oct 27, 2024
- *      Author: admin
- */
-#include"fsm_setting.h"
-
-void fsm_setting() {
- 8000988:	b580      	push	{r7, lr}
- 800098a:	af00      	add	r7, sp, #0
-	switch (status) {
- 800098c:	4b7f      	ldr	r3, [pc, #508]	@ (8000b8c <fsm_setting+0x204>)
- 800098e:	681b      	ldr	r3, [r3, #0]
- 8000990:	2b08      	cmp	r3, #8
- 8000992:	d003      	beq.n	800099c <fsm_setting+0x14>
- 8000994:	2b0f      	cmp	r3, #15
- 8000996:	f000 80db 	beq.w	8000b50 <fsm_setting+0x1c8>
-		setTimer(2, 100);
-		setTimer(1, TIME_GREEN * 100);
-
-		break;
-	default:
-		break;
- 800099a:	e0f5      	b.n	8000b88 <fsm_setting+0x200>
-		switch (status_1) {
- 800099c:	4b7c      	ldr	r3, [pc, #496]	@ (8000b90 <fsm_setting+0x208>)
- 800099e:	681b      	ldr	r3, [r3, #0]
- 80009a0:	2b0e      	cmp	r3, #14
- 80009a2:	d025      	beq.n	80009f0 <fsm_setting+0x68>
- 80009a4:	2b0e      	cmp	r3, #14
- 80009a6:	dc64      	bgt.n	8000a72 <fsm_setting+0xea>
- 80009a8:	2b0c      	cmp	r3, #12
- 80009aa:	d002      	beq.n	80009b2 <fsm_setting+0x2a>
- 80009ac:	2b0d      	cmp	r3, #13
- 80009ae:	d03e      	beq.n	8000a2e <fsm_setting+0xa6>
- 80009b0:	e05f      	b.n	8000a72 <fsm_setting+0xea>
-			turnOn_RED1();
- 80009b2:	f000 ff59 	bl	8001868 <turnOn_RED1>
-			if (isButtonPressed(1) == 1) {
- 80009b6:	2001      	movs	r0, #1
- 80009b8:	f7ff fbc8 	bl	800014c <isButtonPressed>
- 80009bc:	4603      	mov	r3, r0
- 80009be:	2b01      	cmp	r3, #1
- 80009c0:	d102      	bne.n	80009c8 <fsm_setting+0x40>
-				status_1 = MAN_YELLOW_1;
- 80009c2:	4b73      	ldr	r3, [pc, #460]	@ (8000b90 <fsm_setting+0x208>)
- 80009c4:	220e      	movs	r2, #14
- 80009c6:	601a      	str	r2, [r3, #0]
-			if (isTimerExpired(3) == 1) {
- 80009c8:	2003      	movs	r0, #3
- 80009ca:	f000 ff03 	bl	80017d4 <isTimerExpired>
- 80009ce:	4603      	mov	r3, r0
- 80009d0:	2b01      	cmp	r3, #1
- 80009d2:	d103      	bne.n	80009dc <fsm_setting+0x54>
-				scanLEDs(99, 5);
- 80009d4:	2105      	movs	r1, #5
- 80009d6:	2063      	movs	r0, #99	@ 0x63
- 80009d8:	f7ff fc62 	bl	80002a0 <scanLEDs>
-			if (isButtonPressed(0) == 1) {
- 80009dc:	2000      	movs	r0, #0
- 80009de:	f7ff fbb5 	bl	800014c <isButtonPressed>
- 80009e2:	4603      	mov	r3, r0
- 80009e4:	2b01      	cmp	r3, #1
- 80009e6:	d141      	bne.n	8000a6c <fsm_setting+0xe4>
-				status = READY;
- 80009e8:	4b68      	ldr	r3, [pc, #416]	@ (8000b8c <fsm_setting+0x204>)
- 80009ea:	220f      	movs	r2, #15
- 80009ec:	601a      	str	r2, [r3, #0]
-			break;
- 80009ee:	e03d      	b.n	8000a6c <fsm_setting+0xe4>
-			turnOn_YELLOW1();
- 80009f0:	f000 ff66 	bl	80018c0 <turnOn_YELLOW1>
-			if (isButtonPressed(1) == 1) {
- 80009f4:	2001      	movs	r0, #1
- 80009f6:	f7ff fba9 	bl	800014c <isButtonPressed>
- 80009fa:	4603      	mov	r3, r0
- 80009fc:	2b01      	cmp	r3, #1
- 80009fe:	d102      	bne.n	8000a06 <fsm_setting+0x7e>
-				status_1 = MAN_GREEN_1;
- 8000a00:	4b63      	ldr	r3, [pc, #396]	@ (8000b90 <fsm_setting+0x208>)
- 8000a02:	220d      	movs	r2, #13
- 8000a04:	601a      	str	r2, [r3, #0]
-			if (isButtonPressed(0) == 1) {
- 8000a06:	2000      	movs	r0, #0
- 8000a08:	f7ff fba0 	bl	800014c <isButtonPressed>
- 8000a0c:	4603      	mov	r3, r0
- 8000a0e:	2b01      	cmp	r3, #1
- 8000a10:	d102      	bne.n	8000a18 <fsm_setting+0x90>
-				status = READY;
- 8000a12:	4b5e      	ldr	r3, [pc, #376]	@ (8000b8c <fsm_setting+0x204>)
- 8000a14:	220f      	movs	r2, #15
- 8000a16:	601a      	str	r2, [r3, #0]
-			if (isTimerExpired(3) == 1) {
- 8000a18:	2003      	movs	r0, #3
- 8000a1a:	f000 fedb 	bl	80017d4 <isTimerExpired>
- 8000a1e:	4603      	mov	r3, r0
- 8000a20:	2b01      	cmp	r3, #1
- 8000a22:	d125      	bne.n	8000a70 <fsm_setting+0xe8>
-				scanLEDs(99, 5);
- 8000a24:	2105      	movs	r1, #5
- 8000a26:	2063      	movs	r0, #99	@ 0x63
- 8000a28:	f7ff fc3a 	bl	80002a0 <scanLEDs>
-			break;
- 8000a2c:	e020      	b.n	8000a70 <fsm_setting+0xe8>
-			turnOn_GREEN1();
- 8000a2e:	f000 ff31 	bl	8001894 <turnOn_GREEN1>
-			if (isButtonPressed(1) == 1) {
- 8000a32:	2001      	movs	r0, #1
- 8000a34:	f7ff fb8a 	bl	800014c <isButtonPressed>
- 8000a38:	4603      	mov	r3, r0
- 8000a3a:	2b01      	cmp	r3, #1
- 8000a3c:	d102      	bne.n	8000a44 <fsm_setting+0xbc>
-				status_1 = MAN_RED_1;
- 8000a3e:	4b54      	ldr	r3, [pc, #336]	@ (8000b90 <fsm_setting+0x208>)
- 8000a40:	220c      	movs	r2, #12
- 8000a42:	601a      	str	r2, [r3, #0]
-			if (isButtonPressed(0) == 1) {
- 8000a44:	2000      	movs	r0, #0
- 8000a46:	f7ff fb81 	bl	800014c <isButtonPressed>
- 8000a4a:	4603      	mov	r3, r0
- 8000a4c:	2b01      	cmp	r3, #1
- 8000a4e:	d102      	bne.n	8000a56 <fsm_setting+0xce>
-				status = READY;
- 8000a50:	4b4e      	ldr	r3, [pc, #312]	@ (8000b8c <fsm_setting+0x204>)
- 8000a52:	220f      	movs	r2, #15
- 8000a54:	601a      	str	r2, [r3, #0]
-			if (isTimerExpired(3) == 1) {
- 8000a56:	2003      	movs	r0, #3
- 8000a58:	f000 febc 	bl	80017d4 <isTimerExpired>
- 8000a5c:	4603      	mov	r3, r0
- 8000a5e:	2b01      	cmp	r3, #1
- 8000a60:	d107      	bne.n	8000a72 <fsm_setting+0xea>
-				scanLEDs(99, 5);
- 8000a62:	2105      	movs	r1, #5
- 8000a64:	2063      	movs	r0, #99	@ 0x63
- 8000a66:	f7ff fc1b 	bl	80002a0 <scanLEDs>
- 8000a6a:	e002      	b.n	8000a72 <fsm_setting+0xea>
-			break;
- 8000a6c:	bf00      	nop
- 8000a6e:	e000      	b.n	8000a72 <fsm_setting+0xea>
-			break;
- 8000a70:	bf00      	nop
-		switch (status_2) {
- 8000a72:	4b48      	ldr	r3, [pc, #288]	@ (8000b94 <fsm_setting+0x20c>)
- 8000a74:	681b      	ldr	r3, [r3, #0]
- 8000a76:	2b0b      	cmp	r3, #11
- 8000a78:	d026      	beq.n	8000ac8 <fsm_setting+0x140>
- 8000a7a:	2b0b      	cmp	r3, #11
- 8000a7c:	f300 8083 	bgt.w	8000b86 <fsm_setting+0x1fe>
- 8000a80:	2b09      	cmp	r3, #9
- 8000a82:	d002      	beq.n	8000a8a <fsm_setting+0x102>
- 8000a84:	2b0a      	cmp	r3, #10
- 8000a86:	d03e      	beq.n	8000b06 <fsm_setting+0x17e>
-		break;
- 8000a88:	e07d      	b.n	8000b86 <fsm_setting+0x1fe>
-			turnOn_RED2();
- 8000a8a:	f000 ff2f 	bl	80018ec <turnOn_RED2>
-			if (isButtonPressed(2) == 1) {
- 8000a8e:	2002      	movs	r0, #2
- 8000a90:	f7ff fb5c 	bl	800014c <isButtonPressed>
- 8000a94:	4603      	mov	r3, r0
- 8000a96:	2b01      	cmp	r3, #1
- 8000a98:	d102      	bne.n	8000aa0 <fsm_setting+0x118>
-				status_2 = MAN_YELLOW_2;
- 8000a9a:	4b3e      	ldr	r3, [pc, #248]	@ (8000b94 <fsm_setting+0x20c>)
- 8000a9c:	220b      	movs	r2, #11
- 8000a9e:	601a      	str	r2, [r3, #0]
-			if (isTimerExpired(3) == 1) {
- 8000aa0:	2003      	movs	r0, #3
- 8000aa2:	f000 fe97 	bl	80017d4 <isTimerExpired>
- 8000aa6:	4603      	mov	r3, r0
- 8000aa8:	2b01      	cmp	r3, #1
- 8000aaa:	d103      	bne.n	8000ab4 <fsm_setting+0x12c>
-				scanLEDs(99, 5);
- 8000aac:	2105      	movs	r1, #5
- 8000aae:	2063      	movs	r0, #99	@ 0x63
- 8000ab0:	f7ff fbf6 	bl	80002a0 <scanLEDs>
-			if (isButtonPressed(0) == 1) {
- 8000ab4:	2000      	movs	r0, #0
- 8000ab6:	f7ff fb49 	bl	800014c <isButtonPressed>
- 8000aba:	4603      	mov	r3, r0
- 8000abc:	2b01      	cmp	r3, #1
- 8000abe:	d141      	bne.n	8000b44 <fsm_setting+0x1bc>
-				status = READY;
- 8000ac0:	4b32      	ldr	r3, [pc, #200]	@ (8000b8c <fsm_setting+0x204>)
- 8000ac2:	220f      	movs	r2, #15
- 8000ac4:	601a      	str	r2, [r3, #0]
-			break;
- 8000ac6:	e03d      	b.n	8000b44 <fsm_setting+0x1bc>
-			turnOn_YELLOW2();
- 8000ac8:	f000 ff40 	bl	800194c <turnOn_YELLOW2>
-			if (isButtonPressed(2) == 1) {
- 8000acc:	2002      	movs	r0, #2
- 8000ace:	f7ff fb3d 	bl	800014c <isButtonPressed>
- 8000ad2:	4603      	mov	r3, r0
- 8000ad4:	2b01      	cmp	r3, #1
- 8000ad6:	d102      	bne.n	8000ade <fsm_setting+0x156>
-				status_2 = MAN_GREEN_2;
- 8000ad8:	4b2e      	ldr	r3, [pc, #184]	@ (8000b94 <fsm_setting+0x20c>)
- 8000ada:	220a      	movs	r2, #10
- 8000adc:	601a      	str	r2, [r3, #0]
-			if (isTimerExpired(3) == 1) {
- 8000ade:	2003      	movs	r0, #3
- 8000ae0:	f000 fe78 	bl	80017d4 <isTimerExpired>
- 8000ae4:	4603      	mov	r3, r0
- 8000ae6:	2b01      	cmp	r3, #1
- 8000ae8:	d103      	bne.n	8000af2 <fsm_setting+0x16a>
-				scanLEDs(99, 5);
- 8000aea:	2105      	movs	r1, #5
- 8000aec:	2063      	movs	r0, #99	@ 0x63
- 8000aee:	f7ff fbd7 	bl	80002a0 <scanLEDs>
-			if (isButtonPressed(0) == 1) {
- 8000af2:	2000      	movs	r0, #0
- 8000af4:	f7ff fb2a 	bl	800014c <isButtonPressed>
- 8000af8:	4603      	mov	r3, r0
- 8000afa:	2b01      	cmp	r3, #1
- 8000afc:	d124      	bne.n	8000b48 <fsm_setting+0x1c0>
-				status = READY;
- 8000afe:	4b23      	ldr	r3, [pc, #140]	@ (8000b8c <fsm_setting+0x204>)
- 8000b00:	220f      	movs	r2, #15
- 8000b02:	601a      	str	r2, [r3, #0]
-			break;
- 8000b04:	e020      	b.n	8000b48 <fsm_setting+0x1c0>
-			turnOn_GREEN2();
- 8000b06:	f000 ff09 	bl	800191c <turnOn_GREEN2>
-			if (isButtonPressed(2) == 1) {
- 8000b0a:	2002      	movs	r0, #2
- 8000b0c:	f7ff fb1e 	bl	800014c <isButtonPressed>
- 8000b10:	4603      	mov	r3, r0
- 8000b12:	2b01      	cmp	r3, #1
- 8000b14:	d102      	bne.n	8000b1c <fsm_setting+0x194>
-				status_2 = MAN_RED_2;
- 8000b16:	4b1f      	ldr	r3, [pc, #124]	@ (8000b94 <fsm_setting+0x20c>)
- 8000b18:	2209      	movs	r2, #9
- 8000b1a:	601a      	str	r2, [r3, #0]
-			if (isTimerExpired(3) == 1) {
- 8000b1c:	2003      	movs	r0, #3
- 8000b1e:	f000 fe59 	bl	80017d4 <isTimerExpired>
- 8000b22:	4603      	mov	r3, r0
- 8000b24:	2b01      	cmp	r3, #1
- 8000b26:	d103      	bne.n	8000b30 <fsm_setting+0x1a8>
-				scanLEDs(99, 5);
- 8000b28:	2105      	movs	r1, #5
- 8000b2a:	2063      	movs	r0, #99	@ 0x63
- 8000b2c:	f7ff fbb8 	bl	80002a0 <scanLEDs>
-			if (isButtonPressed(0) == 1) {
- 8000b30:	2000      	movs	r0, #0
- 8000b32:	f7ff fb0b 	bl	800014c <isButtonPressed>
- 8000b36:	4603      	mov	r3, r0
- 8000b38:	2b01      	cmp	r3, #1
- 8000b3a:	d107      	bne.n	8000b4c <fsm_setting+0x1c4>
-				status = READY;
- 8000b3c:	4b13      	ldr	r3, [pc, #76]	@ (8000b8c <fsm_setting+0x204>)
- 8000b3e:	220f      	movs	r2, #15
- 8000b40:	601a      	str	r2, [r3, #0]
-			break;
- 8000b42:	e003      	b.n	8000b4c <fsm_setting+0x1c4>
-			break;
- 8000b44:	bf00      	nop
- 8000b46:	e01e      	b.n	8000b86 <fsm_setting+0x1fe>
-			break;
- 8000b48:	bf00      	nop
- 8000b4a:	e01c      	b.n	8000b86 <fsm_setting+0x1fe>
-			break;
- 8000b4c:	bf00      	nop
-		break;
- 8000b4e:	e01a      	b.n	8000b86 <fsm_setting+0x1fe>
-		status = RED_GREEN;
- 8000b50:	4b0e      	ldr	r3, [pc, #56]	@ (8000b8c <fsm_setting+0x204>)
- 8000b52:	2202      	movs	r2, #2
- 8000b54:	601a      	str	r2, [r3, #0]
-		time_1 = TIME_GREEN - 1;
- 8000b56:	4b10      	ldr	r3, [pc, #64]	@ (8000b98 <fsm_setting+0x210>)
- 8000b58:	681b      	ldr	r3, [r3, #0]
- 8000b5a:	3b01      	subs	r3, #1
- 8000b5c:	4a0f      	ldr	r2, [pc, #60]	@ (8000b9c <fsm_setting+0x214>)
- 8000b5e:	6013      	str	r3, [r2, #0]
-		time_2 = TIME_RED - 1;
- 8000b60:	4b0f      	ldr	r3, [pc, #60]	@ (8000ba0 <fsm_setting+0x218>)
- 8000b62:	681b      	ldr	r3, [r3, #0]
- 8000b64:	3b01      	subs	r3, #1
- 8000b66:	4a0f      	ldr	r2, [pc, #60]	@ (8000ba4 <fsm_setting+0x21c>)
- 8000b68:	6013      	str	r3, [r2, #0]
-		setTimer(2, 100);
- 8000b6a:	2164      	movs	r1, #100	@ 0x64
- 8000b6c:	2002      	movs	r0, #2
- 8000b6e:	f000 fe19 	bl	80017a4 <setTimer>
-		setTimer(1, TIME_GREEN * 100);
- 8000b72:	4b09      	ldr	r3, [pc, #36]	@ (8000b98 <fsm_setting+0x210>)
- 8000b74:	681b      	ldr	r3, [r3, #0]
- 8000b76:	2264      	movs	r2, #100	@ 0x64
- 8000b78:	fb02 f303 	mul.w	r3, r2, r3
- 8000b7c:	4619      	mov	r1, r3
- 8000b7e:	2001      	movs	r0, #1
- 8000b80:	f000 fe10 	bl	80017a4 <setTimer>
-		break;
- 8000b84:	e000      	b.n	8000b88 <fsm_setting+0x200>
-		break;
+ 8000b82:	bf00      	nop
+ 8000b84:	bd80      	pop	{r7, pc}
  8000b86:	bf00      	nop
-	}
-}
- 8000b88:	bf00      	nop
- 8000b8a:	bd80      	pop	{r7, pc}
- 8000b8c:	200000fc 	.word	0x200000fc
- 8000b90:	20000100 	.word	0x20000100
- 8000b94:	20000104 	.word	0x20000104
- 8000b98:	20000008 	.word	0x20000008
- 8000b9c:	20000108 	.word	0x20000108
- 8000ba0:	20000000 	.word	0x20000000
+ 8000b88:	200000fc 	.word	0x200000fc
+ 8000b8c:	40010800 	.word	0x40010800
+ 8000b90:	20000110 	.word	0x20000110
+ 8000b94:	20000000 	.word	0x20000000
+ 8000b98:	20000108 	.word	0x20000108
+ 8000b9c:	20000008 	.word	0x20000008
+ 8000ba0:	20000004 	.word	0x20000004
  8000ba4:	2000010c 	.word	0x2000010c
 
 08000ba8 <updateClockBuffer>:
@@ -2947,7 +2947,7 @@ int main(void)
 		fsm_automatic_run();
  8001474:	f7fe ff44 	bl	8000300 <fsm_automatic_run>
 		fsm_setting();
- 8001478:	f7ff fa86 	bl	8000988 <fsm_setting>
+ 8001478:	f7ff fa56 	bl	8000928 <fsm_setting>
 		fsm_manual_run();
  800147c:	bf00      	nop
  800147e:	e7f7      	b.n	8001470 <main+0x20>

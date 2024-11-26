@@ -3050,11 +3050,11 @@ LOAD C:/ST/STM32CubeIDE_1.7.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
                 0x08000300      0x408 ./Core/Src/fsm_automatic.o
                 0x08000300                fsm_automatic_run
  .text.fsm_manual_run
-                0x08000708      0x280 ./Core/Src/fsm_manual.o
+                0x08000708      0x220 ./Core/Src/fsm_manual.o
                 0x08000708                fsm_manual_run
  .text.fsm_setting
-                0x08000988      0x220 ./Core/Src/fsm_setting.o
-                0x08000988                fsm_setting
+                0x08000928      0x280 ./Core/Src/fsm_setting.o
+                0x08000928                fsm_setting
  .text.updateClockBuffer
                 0x08000ba8       0x78 ./Core/Src/led7_segment.o
                 0x08000ba8                updateClockBuffer
@@ -3553,8 +3553,8 @@ LOAD C:/ST/STM32CubeIDE_1.7.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
 .debug_info     0x00000000     0x89f0
  .debug_info    0x00000000      0x28d ./Core/Src/button.o
  .debug_info    0x0000028d      0x2a2 ./Core/Src/fsm_automatic.o
- .debug_info    0x0000052f      0x1f1 ./Core/Src/fsm_manual.o
- .debug_info    0x00000720      0x16e ./Core/Src/fsm_setting.o
+ .debug_info    0x0000052f      0x16e ./Core/Src/fsm_manual.o
+ .debug_info    0x0000069d      0x1f1 ./Core/Src/fsm_setting.o
  .debug_info    0x0000088e      0x162 ./Core/Src/global.o
  .debug_info    0x000009f0      0x269 ./Core/Src/led7_segment.o
  .debug_info    0x00000c59      0xba5 ./Core/Src/main.o
@@ -3574,8 +3574,8 @@ LOAD C:/ST/STM32CubeIDE_1.7.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
 .debug_abbrev   0x00000000     0x1dc7
  .debug_abbrev  0x00000000      0x198 ./Core/Src/button.o
  .debug_abbrev  0x00000198      0x135 ./Core/Src/fsm_automatic.o
- .debug_abbrev  0x000002cd      0x108 ./Core/Src/fsm_manual.o
- .debug_abbrev  0x000003d5       0xa7 ./Core/Src/fsm_setting.o
+ .debug_abbrev  0x000002cd       0xa7 ./Core/Src/fsm_manual.o
+ .debug_abbrev  0x00000374      0x108 ./Core/Src/fsm_setting.o
  .debug_abbrev  0x0000047c       0x4e ./Core/Src/global.o
  .debug_abbrev  0x000004ca      0x169 ./Core/Src/led7_segment.o
  .debug_abbrev  0x00000633      0x2b1 ./Core/Src/main.o
@@ -3731,8 +3731,8 @@ LOAD C:/ST/STM32CubeIDE_1.7.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
 .debug_line     0x00000000     0xd99f
  .debug_line    0x00000000      0x803 ./Core/Src/button.o
  .debug_line    0x00000803      0x8d1 ./Core/Src/fsm_automatic.o
- .debug_line    0x000010d4      0x83a ./Core/Src/fsm_manual.o
- .debug_line    0x0000190e      0x85b ./Core/Src/fsm_setting.o
+ .debug_line    0x000010d4      0x849 ./Core/Src/fsm_manual.o
+ .debug_line    0x0000191d      0x84c ./Core/Src/fsm_setting.o
  .debug_line    0x00002169      0x730 ./Core/Src/global.o
  .debug_line    0x00002899      0x893 ./Core/Src/led7_segment.o
  .debug_line    0x0000312c      0x88e ./Core/Src/main.o
@@ -3754,10 +3754,10 @@ LOAD C:/ST/STM32CubeIDE_1.7.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
                               0x7fe03 (size before relaxing)
  .debug_str     0x0007fac0      0x12d ./Core/Src/fsm_automatic.o
                               0x7fe8d (size before relaxing)
- .debug_str     0x0007fbed       0x2e ./Core/Src/fsm_manual.o
-                              0x7fde5 (size before relaxing)
- .debug_str     0x0007fc1b       0x3a ./Core/Src/fsm_setting.o
-                              0x7fdef (size before relaxing)
+ .debug_str     0x0007fbed       0x28 ./Core/Src/fsm_manual.o
+                              0x7fddd (size before relaxing)
+ .debug_str     0x0007fc15       0x40 ./Core/Src/fsm_setting.o
+                              0x7fdf7 (size before relaxing)
  .debug_str     0x0007fc55       0x15 ./Core/Src/global.o
                               0x7fd71 (size before relaxing)
  .debug_str     0x0007fc6a       0x60 ./Core/Src/led7_segment.o
