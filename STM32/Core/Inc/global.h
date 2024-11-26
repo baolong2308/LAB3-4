@@ -34,10 +34,14 @@ extern int count;
 #define RED_YELLOW  3
 #define GREEN_RED	4
 #define YELLOW_RED	5
-#define MAN_RED    12
-#define MAN_GREEN  13
-#define MAN_YELLOW 14
-
+#define MANUAL		8
+#define MAN_RED_2    9
+#define MAN_GREEN_2  10
+#define MAN_YELLOW_2 11
+#define MAN_RED_1    12
+#define MAN_GREEN_1  13
+#define MAN_YELLOW_1 14
+#define READY		15
 #define SET_RED    16
 #define SET_GREEN  17
 #define SET_YELLOW 18
@@ -46,6 +50,7 @@ extern int count;
 
 
 extern int status;
-
+extern int status_1;
+extern int status_2;
 
 #endif /* INC_GLOBAL_H_ */
