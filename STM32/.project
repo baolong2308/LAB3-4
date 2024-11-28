@@ -29,4 +29,16 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Core/Inc/i2c-lcd.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/Zalo%20Received%20Files/i2c-lcd.h</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/i2c-lcd.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Documents/Zalo%20Received%20Files/i2c-lcd.c</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
