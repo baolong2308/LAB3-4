@@ -18,7 +18,7 @@ void fsm_manual_run() {
 			}
 			if (isTimerExpired(3) == 1) {
 
-				scanLEDs(99, 5);
+				scanLEDs(99, 99);
 			}
 			if (isButtonPressed(0) == 1) {
 				status = READY;
@@ -34,7 +34,7 @@ void fsm_manual_run() {
 			}
 			if (isTimerExpired(3) == 1) {
 
-				scanLEDs(99, 5);
+				scanLEDs(99, 99);
 			}
 			break;
 		case MAN_GREEN_1:
@@ -47,7 +47,7 @@ void fsm_manual_run() {
 			}
 			if (isTimerExpired(3) == 1) {
 
-				scanLEDs(99, 5);
+				scanLEDs(99, 99);
 			}
 		}
 
@@ -59,7 +59,7 @@ void fsm_manual_run() {
 			}
 			if (isTimerExpired(3) == 1) {
 
-				scanLEDs(99, 5);
+				scanLEDs(99, 99);
 			}
 			if (isButtonPressed(0) == 1) {
 				status = READY;

@@ -6,10 +6,13 @@
  */
 
 #include"scheduler.h"
+#include"global.h"
+
 sTask SCH_tasks_G[SCH_MAX_TASKS];
 
 void SCH_Init(void) {
-	unsigned char i;
+	status = INIT;
+	uint32_t i;
 	for (i = 0; i < SCH_MAX_TASKS; i++) {
 		SCH_Delete_Task(i);
 	}
@@ -39,8 +42,8 @@ void SCH_Add_Task(void (*pFunction)(), uint32_t DELAY, uint32_t PERIOD) {
 		index++;
 	}
 	SCH_tasks_G[index].pTask = pFunction;
-	SCH_tasks_G[index].Delay = DELAY / Tick;
-	SCH_tasks_G[index].Period = PERIOD / Tick;
+	SCH_tasks_G[index].Delay = DELAY;
+	SCH_tasks_G[index].Period = PERIOD;
 	SCH_tasks_G[index].RunMe = 0;
 	SCH_tasks_G[index].TaskID = index;
 
@@ -52,6 +55,8 @@ void SCH_Dispatch_Tasks(void) {
 			(*SCH_tasks_G[i].pTask)();
 			SCH_tasks_G[i].RunMe--;
 
+
+			//one shot task
 			if (SCH_tasks_G[i].Period == 0) {
 				SCH_Delete_Task(i);
 

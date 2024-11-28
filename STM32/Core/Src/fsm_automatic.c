@@ -165,6 +165,8 @@ void fsm_automatic_run() {
 		}
 		if (isButtonPressed(1) == 1) {
 			status = MANUAL;
+			status_1 = MAN_RED_1;
+			status_2 = MAN_RED_2;
 		}
 		break;
 	default:

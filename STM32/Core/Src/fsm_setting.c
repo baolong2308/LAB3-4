@@ -12,7 +12,6 @@ void fsm_setting() {
 
 	case SET_RED:
 
-
 		if (isTimerExpired(6) == 1) {
 			HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
 			HAL_GPIO_TogglePin(LED_4_GPIO_Port, LED_4_Pin);
@@ -39,7 +38,6 @@ void fsm_setting() {
 		}
 		break;
 	case SET_GREEN:
-
 
 		if (isTimerExpired(6) == 1) {
 			HAL_GPIO_TogglePin(LED_6_GPIO_Port, LED_6_Pin);
@@ -76,7 +74,6 @@ void fsm_setting() {
 		}
 		break;
 	case SET_YELLOW:
-
 
 		if (isTimerExpired(6) == 1) {
 			HAL_GPIO_TogglePin(LED_2_GPIO_Port, LED_2_Pin);

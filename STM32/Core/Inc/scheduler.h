@@ -25,5 +25,5 @@ void SCH_Add_Task(void (*pFunction)(), uint32_t DELAY, uint32_t PERIOD);//setTim
 void SCH_Update(void);	//TimmerRun
 void SCH_Dispatch_Tasks(void);	//check flag
 void SCH_Delete_Task(uint32_t taskID);
-///unsigned char SCH_Delete_Task(const tByte TASK_INDEX);
+
 #endif /* INC_SCHEDULER_H_ */

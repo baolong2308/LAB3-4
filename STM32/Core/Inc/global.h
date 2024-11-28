@@ -24,7 +24,7 @@ extern int TIME_YELLOW;
 extern int TIME_GREEN;
 extern int time_1;
 extern int time_2;
-extern int led_buffer[] ;
+extern int led_buffer[];
 extern int index_led_1;
 extern int index_led_2;
 extern int count;
@@ -47,7 +47,6 @@ extern int count;
 #define SET_YELLOW 18
 
 #define ERR		   20
-
 
 extern int status;
 extern int status_1;
